@@ -7,7 +7,7 @@ table_definition: |
   CREATE TABLE t_kostya_one (
         sensor_name text,
         value decimal,
-        published_date datetime,
+        published_date timestamp,
         PRIMARY KEY(sensor_name)
   );
 
