@@ -1,0 +1,35 @@
+keyspace: stresscql
+keyspace_definition: |
+  CREATE KEYSPACE stresscql_kostya_column_one WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+table: t_kostya_one
+table_definition: |
+  CREATE TABLE kostya_one (
+        sensor_name text,
+        value decimal,
+        published_date datetime,
+        PRIMARY KEY(sensor_name)
+  );
+
+columnspec:
+  - name: sensor_name
+    size: uniform(5..10) # The names of the staff members are between 5-10 characters
+    population: uniform(1..10) # 10 possible staff members to pick from
+  - name: value
+    cluster: uniform(20..15000) # Staff members do between 20 and 15000 events
+  - name: published_date
+    cluster: uniform(20..15000) # Staff members do between 20 and 15000 events
+
+
+insert:
+  partitions: fixed(1)             # number of unique partitions to update in a single operation
+    # if batchcount > 1, multiple batches will be used but all partitions will
+  # occur in all batches (unless they finish early); only the row counts will vary
+  batchtype: LOGGED               # type of batch to use
+  select: fixed(1)/15000             # uniform chance any single generated CQL row will be visited in a partition;
+  # generated for each partition independently, each time we visit it
+
+queries:
+  simple1:
+    cql: select * from t_kostya_one where published_date >= ? LIMIT 100000
+    fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)

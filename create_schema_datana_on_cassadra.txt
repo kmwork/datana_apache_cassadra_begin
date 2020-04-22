@@ -1,0 +1,11 @@
+-- создание бд без реплик по простому
+create keyspace datana_test WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+
+-- переход в бд датаны
+use datana_test;
+--создание табилцы для MES
+CREATE TABLE datana_test.plc_gateway ( 
+    id UUID PRIMARY KEY, /** id запроса на шлюз на один dataset */
+    time_contoller datetime,  /** время когда считали данные с контроллера
+    data_value map<int, decimal> /** id переменной  и ее значение */
+ );
