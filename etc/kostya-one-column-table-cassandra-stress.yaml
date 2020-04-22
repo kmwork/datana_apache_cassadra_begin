@@ -11,7 +11,8 @@ table_definition: |
         PRIMARY KEY(sensor_name)
   );
 
-  CREATE INDEX t_kostya_one_index_published_date ON t_kostya_one (published_date);
+extra_definitions:
+  - "CREATE CUSTOM INDEX t_kostya_one_index_published_date_idx ON t_kostya_one (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex' WITH OPTIONS = {'analyzer_class': 'org.apache.cassandra.index.sasi.analyzer.NonTokenizingAnalyzer', 'case_sensitive': 'true'};"
 
 columnspec:
   - name: sensor_name
@@ -34,5 +35,5 @@ insert:
 
 queries:
   simple1:
-    cql: select * from t_kostya_one # where published_date > ? LIMIT 100000
+    cql: select * from t_kostya_one where published_date > ? LIMIT 100000
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
