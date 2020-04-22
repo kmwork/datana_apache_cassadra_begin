@@ -6,7 +6,7 @@ keyspace_definition: |
 table: t_kostya_one
 table_definition: |
   CREATE TABLE t_kostya_one (
-        sensor_name text,
+        sensor_name ascii,
         value decimal,
         published_date timestamp,
         PRIMARY KEY(sensor_name)
