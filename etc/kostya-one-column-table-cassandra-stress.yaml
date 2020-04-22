@@ -1,6 +1,7 @@
 keyspace: stresscql_kostya_column_one
+
 keyspace_definition: |
-  CREATE KEYSPACE stresscql_kostya_column_one WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+  CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_one WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
 table: t_kostya_one
 table_definition: |
