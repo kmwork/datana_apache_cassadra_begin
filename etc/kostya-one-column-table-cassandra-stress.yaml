@@ -1,11 +1,11 @@
-keyspace: stresscql_kostya_column_big
+keyspace: stresscql_kostya_column_one
 
 keyspace_definition: |
-  CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_big WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+  CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_one WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
-table: t_kostya_big
+table: t_kostya_one
 table_definition: |
-  CREATE TABLE t_kostya_big (
+  CREATE TABLE t_kostya_one (
         sensor_name ascii,
         value decimal,
         published_date timestamp,
@@ -13,7 +13,7 @@ table_definition: |
   );
 
 extra_definitions:
-  - "CREATE CUSTOM INDEX t_kostya_big_index_published_date_idx ON t_kostya_big (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';"
+  - "CREATE CUSTOM INDEX t_kostya_one_index_published_date_idx ON t_kostya_one (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';"
 
 columnspec:
   - name: sensor_name
@@ -36,5 +36,5 @@ insert:
 
 queries:
   simple1:
-    cql: select * from t_kostya_big where published_date > ? LIMIT 15000
+    cql: select * from t_kostya_one where published_date > ? LIMIT 15000
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
