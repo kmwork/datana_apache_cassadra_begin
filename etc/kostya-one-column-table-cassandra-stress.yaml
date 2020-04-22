@@ -23,7 +23,7 @@ columnspec:
 
 insert:
   partitions: fixed(1)             # number of unique partitions to update in a single operation
-    # if batchcount > 1, multiple batches will be used but all partitions will
+  # if batchcount > 1, multiple batches will be used but all partitions will
   # occur in all batches (unless they finish early); only the row counts will vary
   batchtype: LOGGED               # type of batch to use
   select: fixed(1)/15000             # uniform chance any single generated CQL row will be visited in a partition;
