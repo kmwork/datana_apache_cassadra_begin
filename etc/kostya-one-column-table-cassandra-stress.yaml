@@ -1,4 +1,4 @@
-keyspace: stresscql_kostya_column_one
+keyspace: stresscql_kostya_column_big
 
 keyspace_definition: |
   CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_big WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
@@ -13,7 +13,7 @@ table_definition: |
   );
 
 extra_definitions:
-  - "CREATE CUSTOM INDEX t_kostya_big_index_published_date_idx ON t_kostya_one (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';"
+  - "CREATE CUSTOM INDEX t_kostya_big_index_published_date_idx ON t_kostya_big (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';"
 
 columnspec:
   - name: sensor_name
