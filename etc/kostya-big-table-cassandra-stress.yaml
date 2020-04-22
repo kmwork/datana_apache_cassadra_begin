@@ -3032,6 +3032,6 @@ insert:
 
 
 queries:
-  simple1:
+  simple_big1:
     cql: select * from t_kostya_big where published_date > ? LIMIT 15000
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
