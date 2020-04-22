@@ -36,5 +36,5 @@ insert:
 
 queries:
   simple1:
-    cql: select * from t_kostya_one where published_date > ? LIMIT 300000
+    cql: select * from t_kostya_one where published_date > ? LIMIT 15000
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
