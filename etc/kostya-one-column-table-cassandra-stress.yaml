@@ -11,6 +11,8 @@ table_definition: |
         PRIMARY KEY(sensor_name)
   );
 
+  CREATE INDEX t_kostya_one_index_published_date ON t_kostya_one (published_date);
+
 columnspec:
   - name: sensor_name
     size: uniform(5..10) # The names of the staff members are between 5-10 characters
@@ -22,14 +24,15 @@ columnspec:
 
 
 insert:
-  partitions: fixed(1)             # number of unique partitions to update in a single operation
+  partitions: uniform(1..50)       # number of unique partitions to update in a single operation
   # if batchcount > 1, multiple batches will be used but all partitions will
   # occur in all batches (unless they finish early); only the row counts will vary
   batchtype: LOGGED               # type of batch to use
-  select: fixed(1)/15000             # uniform chance any single generated CQL row will be visited in a partition;
+  select: uniform(1..10)/10       # uniform chance any single generated CQL row will be visited in a partition;
   # generated for each partition independently, each time we visit it
+
 
 queries:
   simple1:
-    cql: select * from t_kostya_one where published_date > ? LIMIT 100000
+    cql: select * from t_kostya_one # where published_date > ? LIMIT 100000
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
