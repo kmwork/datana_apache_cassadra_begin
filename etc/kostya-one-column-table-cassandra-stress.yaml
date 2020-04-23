@@ -18,11 +18,11 @@ extra_definitions:
 columnspec:
   - name: sensor_name
     size: gaussian(5..10)
-    population: uniform(65..90)
+    population: gaussian(65..90)
   - name: value
-    cluster: uniform(20..15000) # Staff members do between 20 and 15000 events
+    cluster: gaussian(20..15000) # Staff members do between 20 and 15000 events
   - name: published_date
-    cluster: uniform(20..15000) # Staff members do between 20 and 15000 events
+    cluster: gaussian(20..15000) # Staff members do between 20 and 15000 events
 
 
 insert:
