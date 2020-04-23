@@ -1,0 +1,2385 @@
+lin@lin-pc:~/apps/cassandra$ ./my-test-column-big.sh
+#!/bin/sh -v
+clear
+export JAVA_HOME=/home/lin/apps/jdk13
+export PATH=$JAVA_HOME/bin:$PATH
+./tools/bin/cassandra-stress user profile="file:///home/lin/work-lanit/my_datana_cassandra/etc/kostya-big-table-cassandra-stress.yaml" n=10 "ops(insert=1,simple_big1=1)"
+./tools/bin/cassandra-stress: 2: ./tools/bin/cassandra-stress: expert: not found
+openjdk version "13.0.2" 2020-01-14
+OpenJDK Runtime Environment (build 13.0.2+8)
+OpenJDK 64-Bit Server VM (build 13.0.2+8, mixed mode, sharing)
+******************** Stress Settings ********************
+Command:
+  Type: user
+  Count: 10
+  No Warmup: false
+  Consistency Level: LOCAL_ONE
+  Target Uncertainty: not applicable
+  Command Ratios: {insert=1.0, simple_big1=1.0}
+  Command Clustering Distribution: clustering=gaussian(1..10)
+  Profile File: file:///home/lin/work-lanit/my_datana_cassandra/etc/kostya-big-table-cassandra-stress.yaml
+Rate:
+  Auto: true
+  Min Threads: 4
+  Max Threads: 1000
+Population:
+  Distribution: Gaussian:  min=1,max=10,mean=5,500000,stdev=1,500000
+  Order: ARBITRARY
+  Wrap: false
+Insert:
+  Revisits: Uniform:  min=1,max=1000000
+  Visits: Fixed:  key=1
+  Row Population Ratio: Ratio: divisor=1,000000;delegate=Fixed:  key=1
+  Batch Type: not batching
+Errors:
+  Ignore: false
+  Tries: 10
+Log:
+  No Summary: false
+  No Settings: false
+  File: null
+  Interval Millis: 1000
+  Level: NORMAL
+Mode:
+  API: JAVA_DRIVER_NATIVE
+  Connection Style: CQL_PREPARED
+  CQL Version: CQL3
+  Protocol Version: V4
+  Username: null
+  Password: null
+  Auth Provide Class: null
+  Max Pending Per Connection: 128
+  Connections Per Host: 8
+  Compression: NONE
+Node:
+  Nodes: [localhost]
+  Is White List: false
+  Datacenter: null
+Schema:
+  Keyspace: stresscql_kostya_column_big
+  Replication Strategy: org.apache.cassandra.locator.SimpleStrategy
+  Replication Strategy Pptions: {replication_factor=1}
+  Table Compression: null
+  Table Compaction Strategy: null
+  Table Compaction Strategy Options: {}
+Transport:
+  factory=org.apache.cassandra.thrift.TFramedTransportFactory; truststore=null; truststore-password=null; keystore=null; keystore-password=null; ssl-protocol=TLS; ssl-alg=SunX509; store-type=JKS; ssl-ciphers=TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA;
+Port:
+  Native Port: 9042
+  Thrift Port: 9160
+  JMX Port: 7199
+Send To Daemon:
+  *not set*
+Graph:
+  File: null
+  Revision: unknown
+  Title: null
+  Operation: USER
+TokenRange:
+  Wrap: false
+  Split Factor: 1
+
+******************** Profile ********************
+  Keyspace Name: stresscql_kostya_column_big
+  Keyspace CQL:
+***
+CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_big WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+***
+
+  Table Name: t_kostya_big
+  Table CQL:
+***
+CREATE TABLE t_kostya_big (
+      sensor_name ascii,
+      value_n_1 decimal,
+      value_n_2 decimal,
+      value_n_3 decimal,
+      value_n_4 decimal,
+      value_n_5 decimal,
+      value_n_6 decimal,
+      value_n_7 decimal,
+      value_n_8 decimal,
+      value_n_9 decimal,
+      value_n_10 decimal,
+      value_n_11 decimal,
+      value_n_12 decimal,
+      value_n_13 decimal,
+      value_n_14 decimal,
+      value_n_15 decimal,
+      value_n_16 decimal,
+      value_n_17 decimal,
+      value_n_18 decimal,
+      value_n_19 decimal,
+      value_n_20 decimal,
+      value_n_21 decimal,
+      value_n_22 decimal,
+      value_n_23 decimal,
+      value_n_24 decimal,
+      value_n_25 decimal,
+      value_n_26 decimal,
+      value_n_27 decimal,
+      value_n_28 decimal,
+      value_n_29 decimal,
+      value_n_30 decimal,
+      value_n_31 decimal,
+      value_n_32 decimal,
+      value_n_33 decimal,
+      value_n_34 decimal,
+      value_n_35 decimal,
+      value_n_36 decimal,
+      value_n_37 decimal,
+      value_n_38 decimal,
+      value_n_39 decimal,
+      value_n_40 decimal,
+      value_n_41 decimal,
+      value_n_42 decimal,
+      value_n_43 decimal,
+      value_n_44 decimal,
+      value_n_45 decimal,
+      value_n_46 decimal,
+      value_n_47 decimal,
+      value_n_48 decimal,
+      value_n_49 decimal,
+      value_n_50 decimal,
+      value_n_51 decimal,
+      value_n_52 decimal,
+      value_n_53 decimal,
+      value_n_54 decimal,
+      value_n_55 decimal,
+      value_n_56 decimal,
+      value_n_57 decimal,
+      value_n_58 decimal,
+      value_n_59 decimal,
+      value_n_60 decimal,
+      value_n_61 decimal,
+      value_n_62 decimal,
+      value_n_63 decimal,
+      value_n_64 decimal,
+      value_n_65 decimal,
+      value_n_66 decimal,
+      value_n_67 decimal,
+      value_n_68 decimal,
+      value_n_69 decimal,
+      value_n_70 decimal,
+      value_n_71 decimal,
+      value_n_72 decimal,
+      value_n_73 decimal,
+      value_n_74 decimal,
+      value_n_75 decimal,
+      value_n_76 decimal,
+      value_n_77 decimal,
+      value_n_78 decimal,
+      value_n_79 decimal,
+      value_n_80 decimal,
+      value_n_81 decimal,
+      value_n_82 decimal,
+      value_n_83 decimal,
+      value_n_84 decimal,
+      value_n_85 decimal,
+      value_n_86 decimal,
+      value_n_87 decimal,
+      value_n_88 decimal,
+      value_n_89 decimal,
+      value_n_90 decimal,
+      value_n_91 decimal,
+      value_n_92 decimal,
+      value_n_93 decimal,
+      value_n_94 decimal,
+      value_n_95 decimal,
+      value_n_96 decimal,
+      value_n_97 decimal,
+      value_n_98 decimal,
+      value_n_99 decimal,
+      value_n_100 decimal,
+      value_n_101 decimal,
+      value_n_102 decimal,
+      value_n_103 decimal,
+      value_n_104 decimal,
+      value_n_105 decimal,
+      value_n_106 decimal,
+      value_n_107 decimal,
+      value_n_108 decimal,
+      value_n_109 decimal,
+      value_n_110 decimal,
+      value_n_111 decimal,
+      value_n_112 decimal,
+      value_n_113 decimal,
+      value_n_114 decimal,
+      value_n_115 decimal,
+      value_n_116 decimal,
+      value_n_117 decimal,
+      value_n_118 decimal,
+      value_n_119 decimal,
+      value_n_120 decimal,
+      value_n_121 decimal,
+      value_n_122 decimal,
+      value_n_123 decimal,
+      value_n_124 decimal,
+      value_n_125 decimal,
+      value_n_126 decimal,
+      value_n_127 decimal,
+      value_n_128 decimal,
+      value_n_129 decimal,
+      value_n_130 decimal,
+      value_n_131 decimal,
+      value_n_132 decimal,
+      value_n_133 decimal,
+      value_n_134 decimal,
+      value_n_135 decimal,
+      value_n_136 decimal,
+      value_n_137 decimal,
+      value_n_138 decimal,
+      value_n_139 decimal,
+      value_n_140 decimal,
+      value_n_141 decimal,
+      value_n_142 decimal,
+      value_n_143 decimal,
+      value_n_144 decimal,
+      value_n_145 decimal,
+      value_n_146 decimal,
+      value_n_147 decimal,
+      value_n_148 decimal,
+      value_n_149 decimal,
+      value_n_150 decimal,
+      value_n_151 decimal,
+      value_n_152 decimal,
+      value_n_153 decimal,
+      value_n_154 decimal,
+      value_n_155 decimal,
+      value_n_156 decimal,
+      value_n_157 decimal,
+      value_n_158 decimal,
+      value_n_159 decimal,
+      value_n_160 decimal,
+      value_n_161 decimal,
+      value_n_162 decimal,
+      value_n_163 decimal,
+      value_n_164 decimal,
+      value_n_165 decimal,
+      value_n_166 decimal,
+      value_n_167 decimal,
+      value_n_168 decimal,
+      value_n_169 decimal,
+      value_n_170 decimal,
+      value_n_171 decimal,
+      value_n_172 decimal,
+      value_n_173 decimal,
+      value_n_174 decimal,
+      value_n_175 decimal,
+      value_n_176 decimal,
+      value_n_177 decimal,
+      value_n_178 decimal,
+      value_n_179 decimal,
+      value_n_180 decimal,
+      value_n_181 decimal,
+      value_n_182 decimal,
+      value_n_183 decimal,
+      value_n_184 decimal,
+      value_n_185 decimal,
+      value_n_186 decimal,
+      value_n_187 decimal,
+      value_n_188 decimal,
+      value_n_189 decimal,
+      value_n_190 decimal,
+      value_n_191 decimal,
+      value_n_192 decimal,
+      value_n_193 decimal,
+      value_n_194 decimal,
+      value_n_195 decimal,
+      value_n_196 decimal,
+      value_n_197 decimal,
+      value_n_198 decimal,
+      value_n_199 decimal,
+      value_n_200 decimal,
+      value_n_201 decimal,
+      value_n_202 decimal,
+      value_n_203 decimal,
+      value_n_204 decimal,
+      value_n_205 decimal,
+      value_n_206 decimal,
+      value_n_207 decimal,
+      value_n_208 decimal,
+      value_n_209 decimal,
+      value_n_210 decimal,
+      value_n_211 decimal,
+      value_n_212 decimal,
+      value_n_213 decimal,
+      value_n_214 decimal,
+      value_n_215 decimal,
+      value_n_216 decimal,
+      value_n_217 decimal,
+      value_n_218 decimal,
+      value_n_219 decimal,
+      value_n_220 decimal,
+      value_n_221 decimal,
+      value_n_222 decimal,
+      value_n_223 decimal,
+      value_n_224 decimal,
+      value_n_225 decimal,
+      value_n_226 decimal,
+      value_n_227 decimal,
+      value_n_228 decimal,
+      value_n_229 decimal,
+      value_n_230 decimal,
+      value_n_231 decimal,
+      value_n_232 decimal,
+      value_n_233 decimal,
+      value_n_234 decimal,
+      value_n_235 decimal,
+      value_n_236 decimal,
+      value_n_237 decimal,
+      value_n_238 decimal,
+      value_n_239 decimal,
+      value_n_240 decimal,
+      value_n_241 decimal,
+      value_n_242 decimal,
+      value_n_243 decimal,
+      value_n_244 decimal,
+      value_n_245 decimal,
+      value_n_246 decimal,
+      value_n_247 decimal,
+      value_n_248 decimal,
+      value_n_249 decimal,
+      value_n_250 decimal,
+      value_n_251 decimal,
+      value_n_252 decimal,
+      value_n_253 decimal,
+      value_n_254 decimal,
+      value_n_255 decimal,
+      value_n_256 decimal,
+      value_n_257 decimal,
+      value_n_258 decimal,
+      value_n_259 decimal,
+      value_n_260 decimal,
+      value_n_261 decimal,
+      value_n_262 decimal,
+      value_n_263 decimal,
+      value_n_264 decimal,
+      value_n_265 decimal,
+      value_n_266 decimal,
+      value_n_267 decimal,
+      value_n_268 decimal,
+      value_n_269 decimal,
+      value_n_270 decimal,
+      value_n_271 decimal,
+      value_n_272 decimal,
+      value_n_273 decimal,
+      value_n_274 decimal,
+      value_n_275 decimal,
+      value_n_276 decimal,
+      value_n_277 decimal,
+      value_n_278 decimal,
+      value_n_279 decimal,
+      value_n_280 decimal,
+      value_n_281 decimal,
+      value_n_282 decimal,
+      value_n_283 decimal,
+      value_n_284 decimal,
+      value_n_285 decimal,
+      value_n_286 decimal,
+      value_n_287 decimal,
+      value_n_288 decimal,
+      value_n_289 decimal,
+      value_n_290 decimal,
+      value_n_291 decimal,
+      value_n_292 decimal,
+      value_n_293 decimal,
+      value_n_294 decimal,
+      value_n_295 decimal,
+      value_n_296 decimal,
+      value_n_297 decimal,
+      value_n_298 decimal,
+      value_n_299 decimal,
+      value_n_300 decimal,
+      value_n_301 decimal,
+      value_n_302 decimal,
+      value_n_303 decimal,
+      value_n_304 decimal,
+      value_n_305 decimal,
+      value_n_306 decimal,
+      value_n_307 decimal,
+      value_n_308 decimal,
+      value_n_309 decimal,
+      value_n_310 decimal,
+      value_n_311 decimal,
+      value_n_312 decimal,
+      value_n_313 decimal,
+      value_n_314 decimal,
+      value_n_315 decimal,
+      value_n_316 decimal,
+      value_n_317 decimal,
+      value_n_318 decimal,
+      value_n_319 decimal,
+      value_n_320 decimal,
+      value_n_321 decimal,
+      value_n_322 decimal,
+      value_n_323 decimal,
+      value_n_324 decimal,
+      value_n_325 decimal,
+      value_n_326 decimal,
+      value_n_327 decimal,
+      value_n_328 decimal,
+      value_n_329 decimal,
+      value_n_330 decimal,
+      value_n_331 decimal,
+      value_n_332 decimal,
+      value_n_333 decimal,
+      value_n_334 decimal,
+      value_n_335 decimal,
+      value_n_336 decimal,
+      value_n_337 decimal,
+      value_n_338 decimal,
+      value_n_339 decimal,
+      value_n_340 decimal,
+      value_n_341 decimal,
+      value_n_342 decimal,
+      value_n_343 decimal,
+      value_n_344 decimal,
+      value_n_345 decimal,
+      value_n_346 decimal,
+      value_n_347 decimal,
+      value_n_348 decimal,
+      value_n_349 decimal,
+      value_n_350 decimal,
+      value_n_351 decimal,
+      value_n_352 decimal,
+      value_n_353 decimal,
+      value_n_354 decimal,
+      value_n_355 decimal,
+      value_n_356 decimal,
+      value_n_357 decimal,
+      value_n_358 decimal,
+      value_n_359 decimal,
+      value_n_360 decimal,
+      value_n_361 decimal,
+      value_n_362 decimal,
+      value_n_363 decimal,
+      value_n_364 decimal,
+      value_n_365 decimal,
+      value_n_366 decimal,
+      value_n_367 decimal,
+      value_n_368 decimal,
+      value_n_369 decimal,
+      value_n_370 decimal,
+      value_n_371 decimal,
+      value_n_372 decimal,
+      value_n_373 decimal,
+      value_n_374 decimal,
+      value_n_375 decimal,
+      value_n_376 decimal,
+      value_n_377 decimal,
+      value_n_378 decimal,
+      value_n_379 decimal,
+      value_n_380 decimal,
+      value_n_381 decimal,
+      value_n_382 decimal,
+      value_n_383 decimal,
+      value_n_384 decimal,
+      value_n_385 decimal,
+      value_n_386 decimal,
+      value_n_387 decimal,
+      value_n_388 decimal,
+      value_n_389 decimal,
+      value_n_390 decimal,
+      value_n_391 decimal,
+      value_n_392 decimal,
+      value_n_393 decimal,
+      value_n_394 decimal,
+      value_n_395 decimal,
+      value_n_396 decimal,
+      value_n_397 decimal,
+      value_n_398 decimal,
+      value_n_399 decimal,
+      value_n_400 decimal,
+      value_n_401 decimal,
+      value_n_402 decimal,
+      value_n_403 decimal,
+      value_n_404 decimal,
+      value_n_405 decimal,
+      value_n_406 decimal,
+      value_n_407 decimal,
+      value_n_408 decimal,
+      value_n_409 decimal,
+      value_n_410 decimal,
+      value_n_411 decimal,
+      value_n_412 decimal,
+      value_n_413 decimal,
+      value_n_414 decimal,
+      value_n_415 decimal,
+      value_n_416 decimal,
+      value_n_417 decimal,
+      value_n_418 decimal,
+      value_n_419 decimal,
+      value_n_420 decimal,
+      value_n_421 decimal,
+      value_n_422 decimal,
+      value_n_423 decimal,
+      value_n_424 decimal,
+      value_n_425 decimal,
+      value_n_426 decimal,
+      value_n_427 decimal,
+      value_n_428 decimal,
+      value_n_429 decimal,
+      value_n_430 decimal,
+      value_n_431 decimal,
+      value_n_432 decimal,
+      value_n_433 decimal,
+      value_n_434 decimal,
+      value_n_435 decimal,
+      value_n_436 decimal,
+      value_n_437 decimal,
+      value_n_438 decimal,
+      value_n_439 decimal,
+      value_n_440 decimal,
+      value_n_441 decimal,
+      value_n_442 decimal,
+      value_n_443 decimal,
+      value_n_444 decimal,
+      value_n_445 decimal,
+      value_n_446 decimal,
+      value_n_447 decimal,
+      value_n_448 decimal,
+      value_n_449 decimal,
+      value_n_450 decimal,
+      value_n_451 decimal,
+      value_n_452 decimal,
+      value_n_453 decimal,
+      value_n_454 decimal,
+      value_n_455 decimal,
+      value_n_456 decimal,
+      value_n_457 decimal,
+      value_n_458 decimal,
+      value_n_459 decimal,
+      value_n_460 decimal,
+      value_n_461 decimal,
+      value_n_462 decimal,
+      value_n_463 decimal,
+      value_n_464 decimal,
+      value_n_465 decimal,
+      value_n_466 decimal,
+      value_n_467 decimal,
+      value_n_468 decimal,
+      value_n_469 decimal,
+      value_n_470 decimal,
+      value_n_471 decimal,
+      value_n_472 decimal,
+      value_n_473 decimal,
+      value_n_474 decimal,
+      value_n_475 decimal,
+      value_n_476 decimal,
+      value_n_477 decimal,
+      value_n_478 decimal,
+      value_n_479 decimal,
+      value_n_480 decimal,
+      value_n_481 decimal,
+      value_n_482 decimal,
+      value_n_483 decimal,
+      value_n_484 decimal,
+      value_n_485 decimal,
+      value_n_486 decimal,
+      value_n_487 decimal,
+      value_n_488 decimal,
+      value_n_489 decimal,
+      value_n_490 decimal,
+      value_n_491 decimal,
+      value_n_492 decimal,
+      value_n_493 decimal,
+      value_n_494 decimal,
+      value_n_495 decimal,
+      value_n_496 decimal,
+      value_n_497 decimal,
+      value_n_498 decimal,
+      value_n_499 decimal,
+      value_n_500 decimal,
+      value_n_501 decimal,
+      value_n_502 decimal,
+      value_n_503 decimal,
+      value_n_504 decimal,
+      value_n_505 decimal,
+      value_n_506 decimal,
+      value_n_507 decimal,
+      value_n_508 decimal,
+      value_n_509 decimal,
+      value_n_510 decimal,
+      value_n_511 decimal,
+      value_n_512 decimal,
+      value_n_513 decimal,
+      value_n_514 decimal,
+      value_n_515 decimal,
+      value_n_516 decimal,
+      value_n_517 decimal,
+      value_n_518 decimal,
+      value_n_519 decimal,
+      value_n_520 decimal,
+      value_n_521 decimal,
+      value_n_522 decimal,
+      value_n_523 decimal,
+      value_n_524 decimal,
+      value_n_525 decimal,
+      value_n_526 decimal,
+      value_n_527 decimal,
+      value_n_528 decimal,
+      value_n_529 decimal,
+      value_n_530 decimal,
+      value_n_531 decimal,
+      value_n_532 decimal,
+      value_n_533 decimal,
+      value_n_534 decimal,
+      value_n_535 decimal,
+      value_n_536 decimal,
+      value_n_537 decimal,
+      value_n_538 decimal,
+      value_n_539 decimal,
+      value_n_540 decimal,
+      value_n_541 decimal,
+      value_n_542 decimal,
+      value_n_543 decimal,
+      value_n_544 decimal,
+      value_n_545 decimal,
+      value_n_546 decimal,
+      value_n_547 decimal,
+      value_n_548 decimal,
+      value_n_549 decimal,
+      value_n_550 decimal,
+      value_n_551 decimal,
+      value_n_552 decimal,
+      value_n_553 decimal,
+      value_n_554 decimal,
+      value_n_555 decimal,
+      value_n_556 decimal,
+      value_n_557 decimal,
+      value_n_558 decimal,
+      value_n_559 decimal,
+      value_n_560 decimal,
+      value_n_561 decimal,
+      value_n_562 decimal,
+      value_n_563 decimal,
+      value_n_564 decimal,
+      value_n_565 decimal,
+      value_n_566 decimal,
+      value_n_567 decimal,
+      value_n_568 decimal,
+      value_n_569 decimal,
+      value_n_570 decimal,
+      value_n_571 decimal,
+      value_n_572 decimal,
+      value_n_573 decimal,
+      value_n_574 decimal,
+      value_n_575 decimal,
+      value_n_576 decimal,
+      value_n_577 decimal,
+      value_n_578 decimal,
+      value_n_579 decimal,
+      value_n_580 decimal,
+      value_n_581 decimal,
+      value_n_582 decimal,
+      value_n_583 decimal,
+      value_n_584 decimal,
+      value_n_585 decimal,
+      value_n_586 decimal,
+      value_n_587 decimal,
+      value_n_588 decimal,
+      value_n_589 decimal,
+      value_n_590 decimal,
+      value_n_591 decimal,
+      value_n_592 decimal,
+      value_n_593 decimal,
+      value_n_594 decimal,
+      value_n_595 decimal,
+      value_n_596 decimal,
+      value_n_597 decimal,
+      value_n_598 decimal,
+      value_n_599 decimal,
+      value_n_600 decimal,
+      value_n_601 decimal,
+      value_n_602 decimal,
+      value_n_603 decimal,
+      value_n_604 decimal,
+      value_n_605 decimal,
+      value_n_606 decimal,
+      value_n_607 decimal,
+      value_n_608 decimal,
+      value_n_609 decimal,
+      value_n_610 decimal,
+      value_n_611 decimal,
+      value_n_612 decimal,
+      value_n_613 decimal,
+      value_n_614 decimal,
+      value_n_615 decimal,
+      value_n_616 decimal,
+      value_n_617 decimal,
+      value_n_618 decimal,
+      value_n_619 decimal,
+      value_n_620 decimal,
+      value_n_621 decimal,
+      value_n_622 decimal,
+      value_n_623 decimal,
+      value_n_624 decimal,
+      value_n_625 decimal,
+      value_n_626 decimal,
+      value_n_627 decimal,
+      value_n_628 decimal,
+      value_n_629 decimal,
+      value_n_630 decimal,
+      value_n_631 decimal,
+      value_n_632 decimal,
+      value_n_633 decimal,
+      value_n_634 decimal,
+      value_n_635 decimal,
+      value_n_636 decimal,
+      value_n_637 decimal,
+      value_n_638 decimal,
+      value_n_639 decimal,
+      value_n_640 decimal,
+      value_n_641 decimal,
+      value_n_642 decimal,
+      value_n_643 decimal,
+      value_n_644 decimal,
+      value_n_645 decimal,
+      value_n_646 decimal,
+      value_n_647 decimal,
+      value_n_648 decimal,
+      value_n_649 decimal,
+      value_n_650 decimal,
+      value_n_651 decimal,
+      value_n_652 decimal,
+      value_n_653 decimal,
+      value_n_654 decimal,
+      value_n_655 decimal,
+      value_n_656 decimal,
+      value_n_657 decimal,
+      value_n_658 decimal,
+      value_n_659 decimal,
+      value_n_660 decimal,
+      value_n_661 decimal,
+      value_n_662 decimal,
+      value_n_663 decimal,
+      value_n_664 decimal,
+      value_n_665 decimal,
+      value_n_666 decimal,
+      value_n_667 decimal,
+      value_n_668 decimal,
+      value_n_669 decimal,
+      value_n_670 decimal,
+      value_n_671 decimal,
+      value_n_672 decimal,
+      value_n_673 decimal,
+      value_n_674 decimal,
+      value_n_675 decimal,
+      value_n_676 decimal,
+      value_n_677 decimal,
+      value_n_678 decimal,
+      value_n_679 decimal,
+      value_n_680 decimal,
+      value_n_681 decimal,
+      value_n_682 decimal,
+      value_n_683 decimal,
+      value_n_684 decimal,
+      value_n_685 decimal,
+      value_n_686 decimal,
+      value_n_687 decimal,
+      value_n_688 decimal,
+      value_n_689 decimal,
+      value_n_690 decimal,
+      value_n_691 decimal,
+      value_n_692 decimal,
+      value_n_693 decimal,
+      value_n_694 decimal,
+      value_n_695 decimal,
+      value_n_696 decimal,
+      value_n_697 decimal,
+      value_n_698 decimal,
+      value_n_699 decimal,
+      value_n_700 decimal,
+      value_n_701 decimal,
+      value_n_702 decimal,
+      value_n_703 decimal,
+      value_n_704 decimal,
+      value_n_705 decimal,
+      value_n_706 decimal,
+      value_n_707 decimal,
+      value_n_708 decimal,
+      value_n_709 decimal,
+      value_n_710 decimal,
+      value_n_711 decimal,
+      value_n_712 decimal,
+      value_n_713 decimal,
+      value_n_714 decimal,
+      value_n_715 decimal,
+      value_n_716 decimal,
+      value_n_717 decimal,
+      value_n_718 decimal,
+      value_n_719 decimal,
+      value_n_720 decimal,
+      value_n_721 decimal,
+      value_n_722 decimal,
+      value_n_723 decimal,
+      value_n_724 decimal,
+      value_n_725 decimal,
+      value_n_726 decimal,
+      value_n_727 decimal,
+      value_n_728 decimal,
+      value_n_729 decimal,
+      value_n_730 decimal,
+      value_n_731 decimal,
+      value_n_732 decimal,
+      value_n_733 decimal,
+      value_n_734 decimal,
+      value_n_735 decimal,
+      value_n_736 decimal,
+      value_n_737 decimal,
+      value_n_738 decimal,
+      value_n_739 decimal,
+      value_n_740 decimal,
+      value_n_741 decimal,
+      value_n_742 decimal,
+      value_n_743 decimal,
+      value_n_744 decimal,
+      value_n_745 decimal,
+      value_n_746 decimal,
+      value_n_747 decimal,
+      value_n_748 decimal,
+      value_n_749 decimal,
+      value_n_750 decimal,
+      value_n_751 decimal,
+      value_n_752 decimal,
+      value_n_753 decimal,
+      value_n_754 decimal,
+      value_n_755 decimal,
+      value_n_756 decimal,
+      value_n_757 decimal,
+      value_n_758 decimal,
+      value_n_759 decimal,
+      value_n_760 decimal,
+      value_n_761 decimal,
+      value_n_762 decimal,
+      value_n_763 decimal,
+      value_n_764 decimal,
+      value_n_765 decimal,
+      value_n_766 decimal,
+      value_n_767 decimal,
+      value_n_768 decimal,
+      value_n_769 decimal,
+      value_n_770 decimal,
+      value_n_771 decimal,
+      value_n_772 decimal,
+      value_n_773 decimal,
+      value_n_774 decimal,
+      value_n_775 decimal,
+      value_n_776 decimal,
+      value_n_777 decimal,
+      value_n_778 decimal,
+      value_n_779 decimal,
+      value_n_780 decimal,
+      value_n_781 decimal,
+      value_n_782 decimal,
+      value_n_783 decimal,
+      value_n_784 decimal,
+      value_n_785 decimal,
+      value_n_786 decimal,
+      value_n_787 decimal,
+      value_n_788 decimal,
+      value_n_789 decimal,
+      value_n_790 decimal,
+      value_n_791 decimal,
+      value_n_792 decimal,
+      value_n_793 decimal,
+      value_n_794 decimal,
+      value_n_795 decimal,
+      value_n_796 decimal,
+      value_n_797 decimal,
+      value_n_798 decimal,
+      value_n_799 decimal,
+      value_n_800 decimal,
+      value_n_801 decimal,
+      value_n_802 decimal,
+      value_n_803 decimal,
+      value_n_804 decimal,
+      value_n_805 decimal,
+      value_n_806 decimal,
+      value_n_807 decimal,
+      value_n_808 decimal,
+      value_n_809 decimal,
+      value_n_810 decimal,
+      value_n_811 decimal,
+      value_n_812 decimal,
+      value_n_813 decimal,
+      value_n_814 decimal,
+      value_n_815 decimal,
+      value_n_816 decimal,
+      value_n_817 decimal,
+      value_n_818 decimal,
+      value_n_819 decimal,
+      value_n_820 decimal,
+      value_n_821 decimal,
+      value_n_822 decimal,
+      value_n_823 decimal,
+      value_n_824 decimal,
+      value_n_825 decimal,
+      value_n_826 decimal,
+      value_n_827 decimal,
+      value_n_828 decimal,
+      value_n_829 decimal,
+      value_n_830 decimal,
+      value_n_831 decimal,
+      value_n_832 decimal,
+      value_n_833 decimal,
+      value_n_834 decimal,
+      value_n_835 decimal,
+      value_n_836 decimal,
+      value_n_837 decimal,
+      value_n_838 decimal,
+      value_n_839 decimal,
+      value_n_840 decimal,
+      value_n_841 decimal,
+      value_n_842 decimal,
+      value_n_843 decimal,
+      value_n_844 decimal,
+      value_n_845 decimal,
+      value_n_846 decimal,
+      value_n_847 decimal,
+      value_n_848 decimal,
+      value_n_849 decimal,
+      value_n_850 decimal,
+      value_n_851 decimal,
+      value_n_852 decimal,
+      value_n_853 decimal,
+      value_n_854 decimal,
+      value_n_855 decimal,
+      value_n_856 decimal,
+      value_n_857 decimal,
+      value_n_858 decimal,
+      value_n_859 decimal,
+      value_n_860 decimal,
+      value_n_861 decimal,
+      value_n_862 decimal,
+      value_n_863 decimal,
+      value_n_864 decimal,
+      value_n_865 decimal,
+      value_n_866 decimal,
+      value_n_867 decimal,
+      value_n_868 decimal,
+      value_n_869 decimal,
+      value_n_870 decimal,
+      value_n_871 decimal,
+      value_n_872 decimal,
+      value_n_873 decimal,
+      value_n_874 decimal,
+      value_n_875 decimal,
+      value_n_876 decimal,
+      value_n_877 decimal,
+      value_n_878 decimal,
+      value_n_879 decimal,
+      value_n_880 decimal,
+      value_n_881 decimal,
+      value_n_882 decimal,
+      value_n_883 decimal,
+      value_n_884 decimal,
+      value_n_885 decimal,
+      value_n_886 decimal,
+      value_n_887 decimal,
+      value_n_888 decimal,
+      value_n_889 decimal,
+      value_n_890 decimal,
+      value_n_891 decimal,
+      value_n_892 decimal,
+      value_n_893 decimal,
+      value_n_894 decimal,
+      value_n_895 decimal,
+      value_n_896 decimal,
+      value_n_897 decimal,
+      value_n_898 decimal,
+      value_n_899 decimal,
+      value_n_900 decimal,
+      value_n_901 decimal,
+      value_n_902 decimal,
+      value_n_903 decimal,
+      value_n_904 decimal,
+      value_n_905 decimal,
+      value_n_906 decimal,
+      value_n_907 decimal,
+      value_n_908 decimal,
+      value_n_909 decimal,
+      value_n_910 decimal,
+      value_n_911 decimal,
+      value_n_912 decimal,
+      value_n_913 decimal,
+      value_n_914 decimal,
+      value_n_915 decimal,
+      value_n_916 decimal,
+      value_n_917 decimal,
+      value_n_918 decimal,
+      value_n_919 decimal,
+      value_n_920 decimal,
+      value_n_921 decimal,
+      value_n_922 decimal,
+      value_n_923 decimal,
+      value_n_924 decimal,
+      value_n_925 decimal,
+      value_n_926 decimal,
+      value_n_927 decimal,
+      value_n_928 decimal,
+      value_n_929 decimal,
+      value_n_930 decimal,
+      value_n_931 decimal,
+      value_n_932 decimal,
+      value_n_933 decimal,
+      value_n_934 decimal,
+      value_n_935 decimal,
+      value_n_936 decimal,
+      value_n_937 decimal,
+      value_n_938 decimal,
+      value_n_939 decimal,
+      value_n_940 decimal,
+      value_n_941 decimal,
+      value_n_942 decimal,
+      value_n_943 decimal,
+      value_n_944 decimal,
+      value_n_945 decimal,
+      value_n_946 decimal,
+      value_n_947 decimal,
+      value_n_948 decimal,
+      value_n_949 decimal,
+      value_n_950 decimal,
+      value_n_951 decimal,
+      value_n_952 decimal,
+      value_n_953 decimal,
+      value_n_954 decimal,
+      value_n_955 decimal,
+      value_n_956 decimal,
+      value_n_957 decimal,
+      value_n_958 decimal,
+      value_n_959 decimal,
+      value_n_960 decimal,
+      value_n_961 decimal,
+      value_n_962 decimal,
+      value_n_963 decimal,
+      value_n_964 decimal,
+      value_n_965 decimal,
+      value_n_966 decimal,
+      value_n_967 decimal,
+      value_n_968 decimal,
+      value_n_969 decimal,
+      value_n_970 decimal,
+      value_n_971 decimal,
+      value_n_972 decimal,
+      value_n_973 decimal,
+      value_n_974 decimal,
+      value_n_975 decimal,
+      value_n_976 decimal,
+      value_n_977 decimal,
+      value_n_978 decimal,
+      value_n_979 decimal,
+      value_n_980 decimal,
+      value_n_981 decimal,
+      value_n_982 decimal,
+      value_n_983 decimal,
+      value_n_984 decimal,
+      value_n_985 decimal,
+      value_n_986 decimal,
+      value_n_987 decimal,
+      value_n_988 decimal,
+      value_n_989 decimal,
+      value_n_990 decimal,
+      value_n_991 decimal,
+      value_n_992 decimal,
+      value_n_993 decimal,
+      value_n_994 decimal,
+      value_n_995 decimal,
+      value_n_996 decimal,
+      value_n_997 decimal,
+      value_n_998 decimal,
+      value_n_999 decimal,
+      value_n_1000 decimal,
+      published_date timestamp,
+      PRIMARY KEY(sensor_name)
+);
+***
+
+  Extra Schema Definitions: [CREATE CUSTOM INDEX t_kostya_big_index_published_date_idx ON t_kostya_big (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';]
+  Generator Configs:
+    value_n_471 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_379 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_424 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_989 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_533 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_488 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_597 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_659 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_704 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_642 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_191 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_2 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_141 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_751 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_692 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_754 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_922 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_203 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_52 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_860 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_253 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_768 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_267 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_421 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_986 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_972 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_816 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_485 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_315 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_329 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_365 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_410 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_701 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_975 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_718 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_594 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_547 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_536 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_819 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_155 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_108 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_928 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_264 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_55 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_158 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_206 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_539 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_130 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_645 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_983 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_312 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_827 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_925 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_695 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_438 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_256 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_362 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_877 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_544 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_914 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_259 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_197 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_242 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_152 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_715 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_169 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_214 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_351 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_805 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_91 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_606 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_368 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_460 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_824 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_522 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_413 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_477 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_278 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_869 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_323 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_63 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_449 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_586 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_648 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_387 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_435 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_416 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_541 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_667 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_802 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_740 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_603 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_133 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_634 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_808 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_838 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_136 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_866 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_275 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_911 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_245 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_194 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_66 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_821 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_217 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_474 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_384 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_200 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_947 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_94 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_583 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_609 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_419 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_525 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_631 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_432 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_326 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_757 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_863 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_580 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_664 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_712 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_69 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_558 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    sensor_name: Size: Gaussian:  min=5,max=10,mean=7,500000,stdev=0,833333;Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_334 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_944 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_272 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_289 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_122 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_670 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_991 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_390 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_749 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_687 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_732 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_139 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_340 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_552 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_295 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_234 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_967 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_891 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_27 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_222 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_569 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_402 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_83 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_799 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_849 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_514 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_452 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_71 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_116 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_787 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_620 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_773 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_47 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_166 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_395 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_502 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_30 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_211 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_637 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_917 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_408 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_564 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_793 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_60 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_446 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_885 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_675 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_930 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_110 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_160 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_519 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_493 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_900 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_357 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_463 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_738 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_950 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_172 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_88 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_844 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_345 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_726 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_743 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_650 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_22 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_10 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_239 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_832 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_304 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_563 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_503 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_16 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_762 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_897 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_105 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_35 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_89 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_283 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_978 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_961 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_781 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_980 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_111 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_779 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_8 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_370 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_874 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_936 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_171 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_737 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_843 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_58 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_128 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_955 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_382 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_147 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_209 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_183 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_698 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_346 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_499 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_440 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_457 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_228 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_427 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_656 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_309 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_28 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_720 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_77 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_855 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_626 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_997 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_494 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_189 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_614 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_813 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_508 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_798 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_177 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_376 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_482 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_469 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_681 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_774 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_707 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_880 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_41 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_575 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_906 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_760 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_822 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_61 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_167 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_93 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_135 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_229 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_199 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_916 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_713 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_792 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_321 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_948 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_963 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_14 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_995 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_854 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_430 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_462 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_931 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_46 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_418 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_998 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_356 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_100 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_524 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_727 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_559 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_665 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_497 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_919 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_164 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_241 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_654 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_273 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_17 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_121 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_868 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_226 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_607 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_686 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_759 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_96 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_399 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_857 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_763 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_215 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_429 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_324 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_476 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_7 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_371 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_556 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_662 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_294 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_297 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_890 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_633 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_889 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_218 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_451 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_865 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_72 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_300 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_527 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_426 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_974 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_959 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_441 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_486 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_270 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_516 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_360 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_595 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_567 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_124 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_811 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_109 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_188 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_657 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_205 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_85 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_143 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_752 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_251 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_814 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_920 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_178 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_284 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_833 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_269 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_893 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_984 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_332 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_905 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_878 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_622 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_960 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_335 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_230 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_673 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_703 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_489 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_748 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_782 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_643 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_724 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_676 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_359 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_571 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_57 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_82 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_830 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_465 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_36 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_513 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_407 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_254 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_381 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_829 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_618 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_697 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_592 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_700 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_33 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_107 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_302 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_882 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_443 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_411 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_74 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_578 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_835 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_80 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_248 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_186 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_976 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_505 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_584 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_281 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_841 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_938 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_478 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_876 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_490 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_646 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_982 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_145 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_903 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_605 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_437 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_543 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_941 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_207 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_68 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_286 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_746 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_181 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_79 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_243 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_348 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_590 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_776 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_192 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_641 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_729 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_735 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_202 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_337 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_307 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_354 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_386 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_113 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_678 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_908 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_175 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_511 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_784 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_600 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_705 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_803 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_573 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_987 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_38 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_405 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_378 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_484 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_589 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_151 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_971 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_852 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_548 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_1000 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_392 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_137 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_473 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_50 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_689 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_871 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_44 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_927 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_933 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_946 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_400 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_535 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_156 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_25 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_373 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_630 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_313 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_629 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_711 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_102 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_771 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_789 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_454 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_560 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_790 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_716 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_19 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_500 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_684 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_318 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_367 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_213 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_49 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_162 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_397 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_795 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_765 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_262 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_611 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_660 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_846 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_554 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_690 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_952 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_237 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_5 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_98 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_292 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_343 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_448 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_132 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_529 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_635 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_741 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_530 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_518 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_456 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_610 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_409 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_501 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_957 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_20 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_627 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_565 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_126 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_674 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_739 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_845 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_173 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_907 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_112 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_783 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_176 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_344 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_677 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_37 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_330 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_87 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_831 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_238 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_406 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_895 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_23 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_380 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_394 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_624 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_333 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_288 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_515 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_34 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_391 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_671 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_898 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_442 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_568 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_81 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_613 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_780 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_282 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_459 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_797 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_187 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_232 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_341 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_129 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_235 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_84 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_616 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_904 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_26 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_722 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_772 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_467 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_285 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_848 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_621 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_179 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_954 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_48 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_730 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_685 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_31 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_775 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_76 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_884 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_227 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_29 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_856 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_993 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_794 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_308 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_951 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_296 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_492 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_495 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_859 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_965 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_450 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_293 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_996 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_507 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_118 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_224 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_260 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_73 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_576 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_682 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_881 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_562 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_579 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_761 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_305 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_791 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_990 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_887 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_932 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_842 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_15 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_504 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_45 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_778 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_688 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_733 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_372 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_70 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_115 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_221 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_935 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_170 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_736 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_12 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_148 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_498 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_299 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_347 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_9 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_652 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_453 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_968 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_593 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_655 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_195 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_257 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_546 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_912 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_867 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_154 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_475 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_520 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_826 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_65 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_59 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_537 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_873 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_608 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_929 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_216 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_428 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_311 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_570 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_800 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_812 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_140 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_632 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_389 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_375 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_42 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_850 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_363 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_708 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_532 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_487 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_104 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_714 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_699 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_669 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_277 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_369 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_581 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_3 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_962 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_481 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_979 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_806 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_142 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_414 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_598 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_540 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_328 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_767 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_861 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_252 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_434 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_949 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_290 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_184 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_316 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_134 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_240 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_755 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_422 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_649 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_364 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_837 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_638 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_820 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_439 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_719 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_383 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_582 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_901 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_246 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_644 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_702 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_599 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_95 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_445 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_265 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_159 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_358 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_327 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_464 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_526 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_557 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_619 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_663 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_538 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_818 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_545 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_924 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_862 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_756 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_210 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_725 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_470 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_258 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_973 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_90 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_271 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_123 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_153 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_744 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_943 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_352 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_825 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_322 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_551 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_339 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_190 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_521 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_750 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_388 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_403 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_602 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_310 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_53 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_693 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_204 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_587 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_892 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_918 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_879 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_786 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_801 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_985 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_165 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_212 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_777 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_78 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_150 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_839 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_668 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_745 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_244 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_276 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_415 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_480 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_353 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_306 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_385 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_338 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_886 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_807 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_433 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_601 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_447 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_11 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_510 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_934 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_291 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_574 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_680 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_149 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_636 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_588 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_509 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_651 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_742 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_577 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_138 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_350 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_913 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_75 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_836 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_731 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_303 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_506 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_840 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_992 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_64 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_553 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_945 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_247 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_709 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_937 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_401 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_585 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_374 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_146 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_966 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_479 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_43 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_788 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_67 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_223 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_604 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_710 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_683 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_117 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_196 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_625 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_396 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_458 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_531 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_317 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_942 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_640 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_612 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_550 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_161 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_766 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_233 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_4 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_691 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_54 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_404 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_342 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_39 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_615 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_706 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_721 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_785 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_21 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_236 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_694 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_468 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_483 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_99 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_847 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_679 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_423 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_377 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_40 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_106 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_549 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_639 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_393 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_851 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_534 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_1 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_926 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_185 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_902 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_444 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_157 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_977 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_872 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_981 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_266 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_24 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_769 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_817 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_127 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_420 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_770 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_875 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_956 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_896 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_923 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_208 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_314 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_103 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_182 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_287 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_319 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_899 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_18 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_366 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_623 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_764 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_398 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_231 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_263 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_717 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_796 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_617 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_661 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_723 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_555 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_56 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_219 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_298 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_325 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_466 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_6 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_97 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_131 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_696 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_758 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_864 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_953 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_528 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_92 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_455 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_823 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_853 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_472 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_958 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_320 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_425 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_13 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_125 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_628 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_870 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_658 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_431 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_815 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_921 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_268 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_417 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_523 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_51 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_261 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_496 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_666 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_894 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_163 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_101 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_999 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_561 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_120 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_180 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_747 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_653 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_809 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_591 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_274 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_336 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_193 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_728 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_349 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_201 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_672 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_734 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_888 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_355 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_174 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_220 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_909 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_572 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_114 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_970 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_361 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_828 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_910 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_301 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_969 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_512 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_255 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_62 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_517 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_198 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_412 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_988 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_883 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_168 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_804 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_810 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_566 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_596 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_964 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_461 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_279 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_915 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_994 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_250 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_32 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_753 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_647 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_280 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_144 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_491 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_249 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_939 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_858 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_119 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_542 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_834 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_436 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_225 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_331 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    value_n_86 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+    published_date: Clustering: Uniform:  min=20,max=15000;
+    value_n_940 decimal: Identity: Gaussian:  min=1,max=10000000,mean=5000000,500000,stdev=1666666,500000;
+  Query Definitions:
+    simple_big1: CQL:select * from t_kostya_big where published_date > ? LIMIT 15000;Fields:samerow;
+  Token Range Queries:
+  Insert Settings:
+    partitions: uniform(1..50)
+    batchtype: LOGGED
+    select: uniform(1..10)/10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/home/lin/apps/cassandra/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Connected to cluster: Test Cluster, max pending requests per connection 128, max connections per host 8
+Datatacenter: datacenter1; Host: localhost/127.0.0.1; Rack: rack1
+Created schema. Sleeping 1s for propagation.
+Created extra schema. Sleeping 1s for propagation.
+Generating batches with [1..50] partitions and [0..50] rows (of [1..50] total rows in the partitions)
+
+Sleeping 2s...
+Warming up insert with 2 iterations...
+Warming up simple_big1 with 2 iterations...
+Thread count was not specified
+
+Running with 4 threadCount
+Running [insert, simple_big1] with 4 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+total,             1,      14,     144,     144,    74,7,    74,8,    74,8,    74,8,    74,8,    74,8,    1,1, -0,70711,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        1 op/s  [insert: 14 op/s]
+Partition rate            :        9 pk/s  [insert: 144 pk/s]
+Row rate                  :        9 row/s [insert: 144 row/s]
+Latency mean              :   74,7 ms [insert: 74,7 ms]
+Latency median            :   74,8 ms [insert: 74,8 ms]
+Latency 95th percentile   :   74,8 ms [insert: 74,8 ms]
+Latency 99th percentile   :   74,8 ms [insert: 74,8 ms]
+Latency 99.9th percentile :   74,8 ms [insert: 74,8 ms]
+Latency max               :   74,8 ms [insert: 74,8 ms]
+Total partitions          :         10 [insert: 10]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:01
+
+Sleeping for 15s
+
+Running with 8 threadCount
+Running [insert, simple_big1] with 8 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+insert,            2,       8,      37,      37,    40,1,    37,7,    42,5,    42,5,    42,5,    42,5,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+simple_big1,         1,       4,       4,       8,    26,5,    26,5,    26,5,    26,5,    26,5,    26,5,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+total,             3,      12,      41,      45,    35,5,    37,7,    42,5,    42,5,    42,5,    42,5,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :       12 op/s  [insert: 8 op/s, simple_big1: 4 op/s]
+Partition rate            :       41 pk/s  [insert: 37 pk/s, simple_big1: 4 pk/s]
+Row rate                  :       45 row/s [insert: 37 row/s, simple_big1: 8 row/s]
+Latency mean              :   35,5 ms [insert: 40,1 ms, simple_big1: 26,5 ms]
+Latency median            :   37,7 ms [insert: 37,7 ms, simple_big1: 26,5 ms]
+Latency 95th percentile   :   42,5 ms [insert: 42,5 ms, simple_big1: 26,5 ms]
+Latency 99th percentile   :   42,5 ms [insert: 42,5 ms, simple_big1: 26,5 ms]
+Latency 99.9th percentile :   42,5 ms [insert: 42,5 ms, simple_big1: 26,5 ms]
+Latency max               :   42,5 ms [insert: 42,5 ms, simple_big1: 26,5 ms]
+Total partitions          :         10 [insert: 9, simple_big1: 1]
+Total errors              :          0 [insert: 0, simple_big1: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 4 threadCount: 1214%
+Sleeping for 15s
+
+Running with 16 threadCount
+Running [insert, simple_big1] with 16 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+insert,            1,       2,      21,      21,    39,5,    39,5,    39,5,    39,5,    39,5,    39,5,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+simple_big1,         1,       2,       0,       0,    17,0,    17,0,    17,0,    17,0,    17,0,    17,0,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+total,             2,       5,      21,      21,    28,2,    17,0,    39,5,    39,5,    39,5,    39,5,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        5 op/s  [insert: 2 op/s, simple_big1: 2 op/s]
+Partition rate            :       21 pk/s  [insert: 21 pk/s, simple_big1: 0 pk/s]
+Row rate                  :       21 row/s [insert: 21 row/s, simple_big1: 0 row/s]
+Latency mean              :   28,2 ms [insert: 39,5 ms, simple_big1: 17,0 ms]
+Latency median            :   17,0 ms [insert: 39,5 ms, simple_big1: 17,0 ms]
+Latency 95th percentile   :   39,5 ms [insert: 39,5 ms, simple_big1: 17,0 ms]
+Latency 99th percentile   :   39,5 ms [insert: 39,5 ms, simple_big1: 17,0 ms]
+Latency 99.9th percentile :   39,5 ms [insert: 39,5 ms, simple_big1: 17,0 ms]
+Latency max               :   39,5 ms [insert: 39,5 ms, simple_big1: 17,0 ms]
+Total partitions          :          9 [insert: 9, simple_big1: 0]
+Total errors              :          0 [insert: 0, simple_big1: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 8 threadCount: -63%
+Sleeping for 15s
+
+Running with 24 threadCount
+Running [insert, simple_big1] with 24 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+insert,            1,       2,      13,      13,    42,6,    42,6,    42,6,    42,6,    42,6,    42,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+simple_big1,         2,       3,       2,       7,    24,4,    14,7,    34,2,    34,2,    34,2,    34,2,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+total,             3,       5,      15,      20,    30,5,    34,2,    42,6,    42,6,    42,6,    42,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        5 op/s  [insert: 2 op/s, simple_big1: 3 op/s]
+Partition rate            :       15 pk/s  [insert: 13 pk/s, simple_big1: 2 pk/s]
+Row rate                  :       20 row/s [insert: 13 row/s, simple_big1: 7 row/s]
+Latency mean              :   30,5 ms [insert: 42,6 ms, simple_big1: 24,4 ms]
+Latency median            :   34,2 ms [insert: 42,6 ms, simple_big1: 14,7 ms]
+Latency 95th percentile   :   42,6 ms [insert: 42,6 ms, simple_big1: 34,2 ms]
+Latency 99th percentile   :   42,6 ms [insert: 42,6 ms, simple_big1: 34,2 ms]
+Latency 99.9th percentile :   42,6 ms [insert: 42,6 ms, simple_big1: 34,2 ms]
+Latency max               :   42,6 ms [insert: 42,6 ms, simple_big1: 34,2 ms]
+Total partitions          :          9 [insert: 8, simple_big1: 1]
+Total errors              :          0 [insert: 0, simple_big1: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 16 threadCount: 7%
+Sleeping for 15s
+
+Running with 36 threadCount
+Running [insert, simple_big1] with 36 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+total,            10,      11,       5,       5,   103,2,   104,3,   115,5,   115,5,   115,5,   115,5,    0,9,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :       11 op/s  [simple_big1: 11 op/s]
+Partition rate            :        5 pk/s  [simple_big1: 5 pk/s]
+Row rate                  :        5 row/s [simple_big1: 5 row/s]
+Latency mean              :  103,2 ms [simple_big1: 103,2 ms]
+Latency median            :  104,3 ms [simple_big1: 104,3 ms]
+Latency 95th percentile   :  115,5 ms [simple_big1: 115,5 ms]
+Latency 99th percentile   :  115,5 ms [simple_big1: 115,5 ms]
+Latency 99.9th percentile :  115,5 ms [simple_big1: 115,5 ms]
+Latency max               :  115,5 ms [simple_big1: 115,5 ms]
+Total partitions          :          5 [simple_big1: 5]
+Total errors              :          0 [simple_big1: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 24 threadCount: 116%
+Sleeping for 15s
+
+Running with 54 threadCount
+Running [insert, simple_big1] with 54 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+total,             1,       3,      35,      35,    41,6,    41,6,    41,6,    41,6,    41,6,    41,6,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        3 op/s  [insert: 3 op/s]
+Partition rate            :       35 pk/s  [insert: 35 pk/s]
+Row rate                  :       35 row/s [insert: 35 row/s]
+Latency mean              :   41,6 ms [insert: 41,6 ms]
+Latency median            :   41,6 ms [insert: 41,6 ms]
+Latency 95th percentile   :   41,6 ms [insert: 41,6 ms]
+Latency 99th percentile   :   41,6 ms [insert: 41,6 ms]
+Latency 99.9th percentile :   41,6 ms [insert: 41,6 ms]
+Latency max               :   41,6 ms [insert: 41,6 ms]
+Total partitions          :         10 [insert: 10]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 36 threadCount: -67%
+Sleeping for 15s
+
+Running with 81 threadCount
+Running [insert, simple_big1] with 81 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+insert,            1,       1,      12,      12,    85,0,    85,0,    85,0,    85,0,    85,0,    85,0,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+simple_big1,         1,       1,       1,       1,    59,1,    59,1,    59,1,    59,1,    59,1,    59,1,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+total,             2,       3,      13,      13,    72,0,    59,1,    85,0,    85,0,    85,0,    85,0,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        3 op/s  [insert: 1 op/s, simple_big1: 1 op/s]
+Partition rate            :       13 pk/s  [insert: 12 pk/s, simple_big1: 1 pk/s]
+Row rate                  :       13 row/s [insert: 12 row/s, simple_big1: 1 row/s]
+Latency mean              :   72,0 ms [insert: 85,0 ms, simple_big1: 59,1 ms]
+Latency median            :   59,1 ms [insert: 85,0 ms, simple_big1: 59,1 ms]
+Latency 95th percentile   :   85,0 ms [insert: 85,0 ms, simple_big1: 59,1 ms]
+Latency 99th percentile   :   85,0 ms [insert: 85,0 ms, simple_big1: 59,1 ms]
+Latency 99.9th percentile :   85,0 ms [insert: 85,0 ms, simple_big1: 59,1 ms]
+Latency max               :   85,0 ms [insert: 85,0 ms, simple_big1: 59,1 ms]
+Total partitions          :         10 [insert: 9, simple_big1: 1]
+Total errors              :          0 [insert: 0, simple_big1: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 54 threadCount: -24%
+Sleeping for 15s
+
+Running with 121 threadCount
+Running [insert, simple_big1] with 121 threads for 10 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.InvalidQueryException: Batch too large
+total,             1,       3,      26,      26,    46,6,    46,6,    46,6,    46,6,    46,6,    46,6,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        3 op/s  [insert: 3 op/s]
+Partition rate            :       26 pk/s  [insert: 26 pk/s]
+Row rate                  :       26 row/s [insert: 26 row/s]
+Latency mean              :   46,6 ms [insert: 46,6 ms]
+Latency median            :   46,6 ms [insert: 46,6 ms]
+Latency 95th percentile   :   46,6 ms [insert: 46,6 ms]
+Latency 99th percentile   :   46,6 ms [insert: 46,6 ms]
+Latency 99.9th percentile :   46,6 ms [insert: 46,6 ms]
+Latency max               :   46,6 ms [insert: 46,6 ms]
+Total partitions          :         10 [insert: 10]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 81 threadCount: -3%
+Sleeping for 15s
+             id, type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+  4 threadCount, insert,            1,      14,     144,     144,    74,7,    74,8,    74,8,    74,8,    74,8,    74,8,    0,1, -0,70711,      0,      0,       0,       0,       0,       0
+  4 threadCount, total,             1,       1,       9,       9,    74,7,    74,8,    74,8,    74,8,    74,8,    74,8,    1,1, -0,70711,      0,      0,       0,       0,       0,       0
+  8 threadCount, insert,            2,       8,      37,      37,    40,1,    37,7,    42,5,    42,5,    42,5,    42,5,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+  8 threadCount, simple_big1,         1,       4,       4,       8,    26,5,    26,5,    26,5,    26,5,    26,5,    26,5,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+  8 threadCount, total,             3,      12,      41,      45,    35,5,    37,7,    42,5,    42,5,    42,5,    42,5,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+ 16 threadCount, insert,            1,       2,      21,      21,    39,5,    39,5,    39,5,    39,5,    39,5,    39,5,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+ 16 threadCount, simple_big1,         1,       2,       0,       0,    17,0,    17,0,    17,0,    17,0,    17,0,    17,0,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+ 16 threadCount, total,             2,       5,      21,      21,    28,2,    17,0,    39,5,    39,5,    39,5,    39,5,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+ 24 threadCount, insert,            1,       2,      13,      13,    42,6,    42,6,    42,6,    42,6,    42,6,    42,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 24 threadCount, simple_big1,         2,       3,       2,       7,    24,4,    14,7,    34,2,    34,2,    34,2,    34,2,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 24 threadCount, total,             3,       5,      15,      20,    30,5,    34,2,    42,6,    42,6,    42,6,    42,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 36 threadCount, simple_big1,        10,      11,       5,       5,   103,2,   104,3,   115,5,   115,5,   115,5,   115,5,    0,9,  0,00000,      0,      0,       0,       0,       0,       0
+ 36 threadCount, total,            10,      11,       5,       5,   103,2,   104,3,   115,5,   115,5,   115,5,   115,5,    0,9,  0,00000,      0,      0,       0,       0,       0,       0
+ 54 threadCount, insert,            1,       3,      35,      35,    41,6,    41,6,    41,6,    41,6,    41,6,    41,6,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
+ 54 threadCount, total,             1,       3,      35,      35,    41,6,    41,6,    41,6,    41,6,    41,6,    41,6,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
+ 81 threadCount, insert,            1,       1,      12,      12,    85,0,    85,0,    85,0,    85,0,    85,0,    85,0,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+ 81 threadCount, simple_big1,         1,       1,       1,       1,    59,1,    59,1,    59,1,    59,1,    59,1,    59,1,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+ 81 threadCount, total,             2,       3,      13,      13,    72,0,    59,1,    85,0,    85,0,    85,0,    85,0,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+121 threadCount, insert,            1,       3,      26,      26,    46,6,    46,6,    46,6,    46,6,    46,6,    46,6,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+121 threadCount, total,             1,       3,      26,      26,    46,6,    46,6,    46,6,    46,6,    46,6,    46,6,    0,4,  0,00000,      0,      0,       0,       0,       0,       0
+END
+lin@lin-pc:~/apps/cassandra$

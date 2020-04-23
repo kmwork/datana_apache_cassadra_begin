@@ -18,7 +18,7 @@ extra_definitions:
 columnspec:
   - name: sensor_name
     size: gaussian(5..10)
-    population: uniform(65..90)
+    population: gaussian(1..10M)
   - name: value
     cluster: uniform(20..15000) # Staff members do between 20 and 15000 events
   - name: published_date
