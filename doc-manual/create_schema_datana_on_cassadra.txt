@@ -3,7 +3,7 @@ create keyspace datana_test WITH replication = {'class':'SimpleStrategy', 'repli
 
 -- переход в бд датаны
 use datana_test;
---создание табилцы для MES
+--создание таблицы для MES
 CREATE TABLE datana_test.plc_gateway ( 
     id UUID PRIMARY KEY, /** id запроса на шлюз на один dataset */
     time_contoller datetime,  /** время когда считали данные с контроллера
