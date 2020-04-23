@@ -33,7 +33,7 @@ insert:
   # if batchcount > 1, multiple batches will be used but all partitions will
   # occur in all batches (unless they finish early); only the row counts will vary
   batchtype: UNLOGGED               # type of batch to use
-  select: uniform(1..500)/500       # uniform chance any single generated CQL row will be visited in a partition;
+  select: fix(15000)/15000       # uniform chance any single generated CQL row will be visited in a partition;
   # generated for each partition independently, each time we visit it
 
 
