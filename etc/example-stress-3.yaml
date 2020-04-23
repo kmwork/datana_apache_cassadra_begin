@@ -47,7 +47,7 @@ extra_definitions:
 columnspec:
   - name: name
     size: gaussian(1..100)
-    population: gaussian(1..10M)
+    population: gaussian(1..100B)
   - name: parent
     size: gaussian(1..100)
     population: gaussian(1..100)
