@@ -27,8 +27,9 @@ insert:
 
 queries:
   simple1:
+    # '2020-01-01 00:00+03' -- будет параметр из явы передаваться пока срез за 2020 год, потом на 2 недели
     cql: |
-      select * from t_kostya_one where published_date > '2020-04-01 00:00+03'
+      select * from t_kostya_one where published_date > '2020-01-01 00:00+03'
       LIMIT 15000
       ALLOW FILTERING;
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
