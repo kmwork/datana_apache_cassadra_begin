@@ -315,3 +315,4 @@ Sleeping for 15s
 END
 lin@lin-pc:~/apps/cassandra$ ^C
 lin@lin-pc:~/apps/cassandra$
+kostya-one-column-table-cassandra-stress.yaml

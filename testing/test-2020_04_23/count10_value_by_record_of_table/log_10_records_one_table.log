@@ -101,12 +101,15 @@ CREATE TABLE t_kostya_one (
   Extra Schema Definitions: [CREATE CUSTOM INDEX t_kostya_one_index_published_date_idx ON t_kostya_one (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';]
   Generator Configs:
   Query Definitions:
-    simple1: CQL:select * from t_kostya_one where published_date > ? LIMIT 15000;Fields:samerow;
+    simple1: CQL:select * from t_kostya_one where published_date > '2020-01-01 00:00+03'
+LIMIT 15000
+ALLOW FILTERING;
+;Fields:samerow;
   Token Range Queries:
   Insert Settings:
-    partitions: fixed(15000)
+    partitions: fixed(1500)
     batchtype: UNLOGGED
-    select: uniform(1..500)/500
+    select: fixed(1500)/1500
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/home/lin/apps/cassandra/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
 WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
@@ -116,7 +119,7 @@ Connected to cluster: Test Cluster, max pending requests per connection 128, max
 Datatacenter: datacenter1; Host: localhost/127.0.0.1; Rack: rack1
 Created schema. Sleeping 1s for propagation.
 Created extra schema. Sleeping 1s for propagation.
-Generating batches with [15000..15000] partitions and [30..15000] rows (of [15000..15000] total rows in the partitions)
+Generating batches with [1500..1500] partitions and [1500..1500] rows (of [1500..1500] total rows in the partitions)
 
 Sleeping 2s...
 Warming up insert with 2 iterations...
@@ -127,19 +130,19 @@ Running with 4 threadCount
 Truncated stresscql_kostya_column_one.t_kostya_one. Sleeping 1s for propagation.
 Running [insert, simple1] with 4 threads for 10 iteration
 type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
-total,             1,       1,      13,      13,     6,1,     6,1,     6,1,     6,1,     6,1,     6,1,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
+total,             1,      14,     145,     145,     6,4,     6,4,     6,4,     6,4,     6,4,     6,4,    0,1,  0,00000,      0,      0,       0,       0,       0,       0
 
 
 Results:
-Op rate                   :        1 op/s  [insert: 1 op/s]
-Partition rate            :       13 pk/s  [insert: 13 pk/s]
-Row rate                  :       13 row/s [insert: 13 row/s]
-Latency mean              :    6,1 ms [insert: 6,1 ms]
-Latency median            :    6,1 ms [insert: 6,1 ms]
-Latency 95th percentile   :    6,1 ms [insert: 6,1 ms]
-Latency 99th percentile   :    6,1 ms [insert: 6,1 ms]
-Latency 99.9th percentile :    6,1 ms [insert: 6,1 ms]
-Latency max               :    6,1 ms [insert: 6,1 ms]
+Op rate                   :       14 op/s  [insert: 14 op/s]
+Partition rate            :      145 pk/s  [insert: 145 pk/s]
+Row rate                  :      145 row/s [insert: 145 row/s]
+Latency mean              :    6,4 ms [insert: 6,4 ms]
+Latency median            :    6,4 ms [insert: 6,4 ms]
+Latency 95th percentile   :    6,4 ms [insert: 6,4 ms]
+Latency 99th percentile   :    6,4 ms [insert: 6,4 ms]
+Latency 99.9th percentile :    6,4 ms [insert: 6,4 ms]
+Latency max               :    6,4 ms [insert: 6,4 ms]
 Total partitions          :         10 [insert: 10]
 Total errors              :          0 [insert: 0]
 Total GC count            : 0
@@ -155,19 +158,19 @@ Running with 8 threadCount
 Truncated stresscql_kostya_column_one.t_kostya_one. Sleeping 1s for propagation.
 Running [insert, simple1] with 8 threads for 10 iteration
 type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
-total,             1,       1,      11,      11,    16,8,    16,8,    16,8,    16,8,    16,8,    16,8,    0,9,  0,00000,      0,      0,       0,       0,       0,       0
+total,             1,       6,      65,      65,     7,0,     7,0,     7,0,     7,0,     7,0,     7,0,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
 
 
 Results:
-Op rate                   :        1 op/s  [insert: 1 op/s]
-Partition rate            :       11 pk/s  [insert: 11 pk/s]
-Row rate                  :       11 row/s [insert: 11 row/s]
-Latency mean              :   16,8 ms [insert: 16,8 ms]
-Latency median            :   16,8 ms [insert: 16,8 ms]
-Latency 95th percentile   :   16,8 ms [insert: 16,8 ms]
-Latency 99th percentile   :   16,8 ms [insert: 16,8 ms]
-Latency 99.9th percentile :   16,8 ms [insert: 16,8 ms]
-Latency max               :   16,8 ms [insert: 16,8 ms]
+Op rate                   :        6 op/s  [insert: 6 op/s]
+Partition rate            :       65 pk/s  [insert: 65 pk/s]
+Row rate                  :       65 row/s [insert: 65 row/s]
+Latency mean              :    7,0 ms [insert: 7,0 ms]
+Latency median            :    7,0 ms [insert: 7,0 ms]
+Latency 95th percentile   :    7,0 ms [insert: 7,0 ms]
+Latency 99th percentile   :    7,0 ms [insert: 7,0 ms]
+Latency 99.9th percentile :    7,0 ms [insert: 7,0 ms]
+Latency max               :    7,0 ms [insert: 7,0 ms]
 Total partitions          :         10 [insert: 10]
 Total errors              :          0 [insert: 0]
 Total GC count            : 0
@@ -177,26 +180,26 @@ Avg GC time               :    NaN ms
 StdDev GC time            :    0,0 ms
 Total operation time      : 00:00:00
 
-Improvement over 4 threadCount: -14%
+Improvement over 4 threadCount: -55%
 Sleeping for 15s
 
 Running with 16 threadCount
 Truncated stresscql_kostya_column_one.t_kostya_one. Sleeping 1s for propagation.
 Running [insert, simple1] with 16 threads for 10 iteration
 type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
-total,             1,      72,     724,     724,     9,9,     9,9,     9,9,     9,9,     9,9,     9,9,    0,0,  0,00000,      0,      0,       0,       0,       0,       0
+total,             1,       4,      41,      41,     2,8,     2,8,     2,8,     2,8,     2,8,     2,8,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
 
 
 Results:
-Op rate                   :       72 op/s  [insert: 72 op/s]
-Partition rate            :      724 pk/s  [insert: 724 pk/s]
-Row rate                  :      724 row/s [insert: 724 row/s]
-Latency mean              :    9,9 ms [insert: 9,9 ms]
-Latency median            :    9,9 ms [insert: 9,9 ms]
-Latency 95th percentile   :    9,9 ms [insert: 9,9 ms]
-Latency 99th percentile   :    9,9 ms [insert: 9,9 ms]
-Latency 99.9th percentile :    9,9 ms [insert: 9,9 ms]
-Latency max               :    9,9 ms [insert: 9,9 ms]
+Op rate                   :        4 op/s  [insert: 4 op/s]
+Partition rate            :       41 pk/s  [insert: 41 pk/s]
+Row rate                  :       41 row/s [insert: 41 row/s]
+Latency mean              :    2,8 ms [insert: 2,8 ms]
+Latency median            :    2,8 ms [insert: 2,8 ms]
+Latency 95th percentile   :    2,8 ms [insert: 2,8 ms]
+Latency 99th percentile   :    2,8 ms [insert: 2,8 ms]
+Latency 99.9th percentile :    2,8 ms [insert: 2,8 ms]
+Latency max               :    2,8 ms [insert: 2,8 ms]
 Total partitions          :         10 [insert: 10]
 Total errors              :          0 [insert: 0]
 Total GC count            : 0
@@ -206,84 +209,26 @@ Avg GC time               :    NaN ms
 StdDev GC time            :    0,0 ms
 Total operation time      : 00:00:00
 
-Improvement over 8 threadCount: 6254%
+Improvement over 8 threadCount: -37%
 Sleeping for 15s
 
 Running with 24 threadCount
 Truncated stresscql_kostya_column_one.t_kostya_one. Sleeping 1s for propagation.
 Running [insert, simple1] with 24 threads for 10 iteration
 type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
-total,             1,       9,      93,      93,     5,5,     5,5,     5,5,     5,5,     5,5,     5,5,    0,1,  0,00000,      0,      0,       0,       0,       0,       0
-
-
-Results:
-Op rate                   :        9 op/s  [insert: 9 op/s]
-Partition rate            :       93 pk/s  [insert: 93 pk/s]
-Row rate                  :       93 row/s [insert: 93 row/s]
-Latency mean              :    5,5 ms [insert: 5,5 ms]
-Latency median            :    5,5 ms [insert: 5,5 ms]
-Latency 95th percentile   :    5,5 ms [insert: 5,5 ms]
-Latency 99th percentile   :    5,5 ms [insert: 5,5 ms]
-Latency 99.9th percentile :    5,5 ms [insert: 5,5 ms]
-Latency max               :    5,5 ms [insert: 5,5 ms]
-Total partitions          :         10 [insert: 10]
-Total errors              :          0 [insert: 0]
-Total GC count            : 0
-Total GC memory           : 0,000 KiB
-Total GC time             :    0,0 seconds
-Avg GC time               :    NaN ms
-StdDev GC time            :    0,0 ms
-Total operation time      : 00:00:00
-
-Improvement over 16 threadCount: -87%
-Sleeping for 15s
-
-Running with 36 threadCount
-Truncated stresscql_kostya_column_one.t_kostya_one. Sleeping 1s for propagation.
-Running [insert, simple1] with 36 threads for 10 iteration
-type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
-total,             1,       5,      46,      46,     5,4,     5,4,     5,4,     5,4,     5,4,     5,4,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
-
-
-Results:
-Op rate                   :        5 op/s  [insert: 5 op/s]
-Partition rate            :       46 pk/s  [insert: 46 pk/s]
-Row rate                  :       46 row/s [insert: 46 row/s]
-Latency mean              :    5,4 ms [insert: 5,4 ms]
-Latency median            :    5,4 ms [insert: 5,4 ms]
-Latency 95th percentile   :    5,4 ms [insert: 5,4 ms]
-Latency 99th percentile   :    5,4 ms [insert: 5,4 ms]
-Latency 99.9th percentile :    5,4 ms [insert: 5,4 ms]
-Latency max               :    5,4 ms [insert: 5,4 ms]
-Total partitions          :         10 [insert: 10]
-Total errors              :          0 [insert: 0]
-Total GC count            : 0
-Total GC memory           : 0,000 KiB
-Total GC time             :    0,0 seconds
-Avg GC time               :    NaN ms
-StdDev GC time            :    0,0 ms
-Total operation time      : 00:00:00
-
-Improvement over 24 threadCount: -50%
-Sleeping for 15s
-
-Running with 54 threadCount
-Truncated stresscql_kostya_column_one.t_kostya_one. Sleeping 1s for propagation.
-Running [insert, simple1] with 54 threads for 10 iteration
-type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
-total,             1,       3,      31,      31,     8,4,     8,4,     8,4,     8,4,     8,4,     8,4,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
+total,             1,       3,      31,      31,     2,6,     2,6,     2,6,     2,6,     2,6,     2,6,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
 
 
 Results:
 Op rate                   :        3 op/s  [insert: 3 op/s]
 Partition rate            :       31 pk/s  [insert: 31 pk/s]
 Row rate                  :       31 row/s [insert: 31 row/s]
-Latency mean              :    8,4 ms [insert: 8,4 ms]
-Latency median            :    8,4 ms [insert: 8,4 ms]
-Latency 95th percentile   :    8,4 ms [insert: 8,4 ms]
-Latency 99th percentile   :    8,4 ms [insert: 8,4 ms]
-Latency 99.9th percentile :    8,4 ms [insert: 8,4 ms]
-Latency max               :    8,4 ms [insert: 8,4 ms]
+Latency mean              :    2,6 ms [insert: 2,6 ms]
+Latency median            :    2,6 ms [insert: 2,6 ms]
+Latency 95th percentile   :    2,6 ms [insert: 2,6 ms]
+Latency 99th percentile   :    2,6 ms [insert: 2,6 ms]
+Latency 99.9th percentile :    2,6 ms [insert: 2,6 ms]
+Latency max               :    2,6 ms [insert: 2,6 ms]
 Total partitions          :         10 [insert: 10]
 Total errors              :          0 [insert: 0]
 Total GC count            : 0
@@ -293,21 +238,16 @@ Avg GC time               :    NaN ms
 StdDev GC time            :    0,0 ms
 Total operation time      : 00:00:00
 
-Improvement over 36 threadCount: -32%
+Improvement over 16 threadCount: -25%
 Sleeping for 15s
             id, type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
- 4 threadCount, insert,            1,       1,      13,      13,     6,1,     6,1,     6,1,     6,1,     6,1,     6,1,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
- 4 threadCount, total,             1,       1,      13,      13,     6,1,     6,1,     6,1,     6,1,     6,1,     6,1,    0,8,  0,00000,      0,      0,       0,       0,       0,       0
- 8 threadCount, insert,            1,       1,      11,      11,    16,8,    16,8,    16,8,    16,8,    16,8,    16,8,    0,9,  0,00000,      0,      0,       0,       0,       0,       0
- 8 threadCount, total,             1,       1,      11,      11,    16,8,    16,8,    16,8,    16,8,    16,8,    16,8,    0,9,  0,00000,      0,      0,       0,       0,       0,       0
-16 threadCount, insert,            1,      72,     724,     724,     9,9,     9,9,     9,9,     9,9,     9,9,     9,9,    0,0,  0,00000,      0,      0,       0,       0,       0,       0
-16 threadCount, total,             1,      72,     724,     724,     9,9,     9,9,     9,9,     9,9,     9,9,     9,9,    0,0,  0,00000,      0,      0,       0,       0,       0,       0
-24 threadCount, insert,            1,       9,      93,      93,     5,5,     5,5,     5,5,     5,5,     5,5,     5,5,    0,1,  0,00000,      0,      0,       0,       0,       0,       0
-24 threadCount, total,             1,       9,      93,      93,     5,5,     5,5,     5,5,     5,5,     5,5,     5,5,    0,1,  0,00000,      0,      0,       0,       0,       0,       0
-36 threadCount, insert,            1,       5,      46,      46,     5,4,     5,4,     5,4,     5,4,     5,4,     5,4,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
-36 threadCount, total,             1,       5,      46,      46,     5,4,     5,4,     5,4,     5,4,     5,4,     5,4,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
-54 threadCount, insert,            1,       3,      31,      31,     8,4,     8,4,     8,4,     8,4,     8,4,     8,4,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
-54 threadCount, total,             1,       3,      31,      31,     8,4,     8,4,     8,4,     8,4,     8,4,     8,4,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
+ 4 threadCount, insert,            1,      14,     145,     145,     6,4,     6,4,     6,4,     6,4,     6,4,     6,4,    0,1,  0,00000,      0,      0,       0,       0,       0,       0
+ 4 threadCount, total,             1,      14,     145,     145,     6,4,     6,4,     6,4,     6,4,     6,4,     6,4,    0,1,  0,00000,      0,      0,       0,       0,       0,       0
+ 8 threadCount, insert,            1,       6,      65,      65,     7,0,     7,0,     7,0,     7,0,     7,0,     7,0,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+ 8 threadCount, total,             1,       6,      65,      65,     7,0,     7,0,     7,0,     7,0,     7,0,     7,0,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+16 threadCount, insert,            1,       4,      41,      41,     2,8,     2,8,     2,8,     2,8,     2,8,     2,8,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+16 threadCount, total,             1,       4,      41,      41,     2,8,     2,8,     2,8,     2,8,     2,8,     2,8,    0,2,  0,00000,      0,      0,       0,       0,       0,       0
+24 threadCount, insert,            1,       3,      31,      31,     2,6,     2,6,     2,6,     2,6,     2,6,     2,6,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
+24 threadCount, total,             1,       3,      31,      31,     2,6,     2,6,     2,6,     2,6,     2,6,     2,6,    0,3,  0,00000,      0,      0,       0,       0,       0,       0
 END
-lin@lin-pc:~/apps/cassandra$ ^C
 lin@lin-pc:~/apps/cassandra$
