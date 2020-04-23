@@ -27,11 +27,12 @@ extra_definitions:
 
 
 insert:
-  partitions: uniform(1..50)       # number of unique partitions to update in a single operation
+  partitions: uniform(1..10M)       # number of unique partitions to update in a single operation
+  batchcount: 15000
   # if batchcount > 1, multiple batches will be used but all partitions will
   # occur in all batches (unless they finish early); only the row counts will vary
-  batchtype: LOGGED               # type of batch to use
-  select: uniform(1..10)/10       # uniform chance any single generated CQL row will be visited in a partition;
+  batchtype: UNLOGGED               # type of batch to use
+  select: uniform(1..15000)/15000       # uniform chance any single generated CQL row will be visited in a partition;
   # generated for each partition independently, each time we visit it
 
 
