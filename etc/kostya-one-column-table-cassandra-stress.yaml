@@ -17,8 +17,6 @@ table_definition: |
 extra_definitions:
   - "CREATE CUSTOM INDEX t_kostya_one_index_published_date_idx ON t_kostya_one (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';"
 
-
-
 insert:
   partitions: fixed(1500)     # number of unique partitions to update in a single operation
   # if batchcount > 1, multiple batches will be used but all partitions will
@@ -27,11 +25,10 @@ insert:
   select: fixed(1500)/1500       # uniform chance any single generated CQL row will be visited in a partition;
   # generated for each partition independently, each time we visit it
 
-
 queries:
   simple1:
     cql: |
-      select * from t_kostya_one where published_date > '2020-04-09 00:00+03'
+      select * from t_kostya_one where published_date > '2020-04-01 00:00+03'
       LIMIT 15000
       ALLOW FILTERING;
     fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
