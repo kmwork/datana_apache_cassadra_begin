@@ -1,0 +1,436 @@
+lin@lin-pc:~/apps/cassandra$ ./my-test-column-one_100K_records.sh
+#!/bin/sh -v
+clear
+export JAVA_HOME=/home/lin/apps/jdk13
+export PATH=$JAVA_HOME/bin:$PATH
+./tools/bin/cassandra-stress user profile="file:///home/lin/work-lanit/my_datana_cassandra/etc/kostya-one-column-table-cassandra-stress.yaml" n=100000 "ops(insert=15000,simple1=1)" no-warmup./tools/bin/cassandra-stress: 2: ./tools/bin/cassandra-stress: expert: not found
+openjdk version "13.0.2" 2020-01-14
+OpenJDK Runtime Environment (build 13.0.2+8)
+OpenJDK 64-Bit Server VM (build 13.0.2+8, mixed mode, sharing)
+******************** Stress Settings ********************
+Command:
+  Type: user
+  Count: 100 000
+  No Warmup: true
+  Consistency Level: LOCAL_ONE
+  Target Uncertainty: not applicable
+  Command Ratios: {insert=15000.0, simple1=1.0}
+  Command Clustering Distribution: clustering=gaussian(1..10)
+  Profile File: file:///home/lin/work-lanit/my_datana_cassandra/etc/kostya-one-column-table-cassandra-stress.yaml
+Rate:
+  Auto: true
+  Min Threads: 4
+  Max Threads: 1000
+Population:
+  Distribution: Gaussian:  min=1,max=100000,mean=50000,500000,stdev=16666,500000
+  Order: ARBITRARY
+  Wrap: false
+Insert:
+  Revisits: Uniform:  min=1,max=1000000
+  Visits: Fixed:  key=1
+  Row Population Ratio: Ratio: divisor=1,000000;delegate=Fixed:  key=1
+  Batch Type: not batching
+Errors:
+  Ignore: false
+  Tries: 10
+Log:
+  No Summary: false
+  No Settings: false
+  File: null
+  Interval Millis: 1000
+  Level: NORMAL
+Mode:
+  API: JAVA_DRIVER_NATIVE
+  Connection Style: CQL_PREPARED
+  CQL Version: CQL3
+  Protocol Version: V4
+  Username: null
+  Password: null
+  Auth Provide Class: null
+  Max Pending Per Connection: 128
+  Connections Per Host: 8
+  Compression: NONE
+Node:
+  Nodes: [localhost]
+  Is White List: false
+  Datacenter: null
+Schema:
+  Keyspace: stresscql_kostya_column_one
+  Replication Strategy: org.apache.cassandra.locator.SimpleStrategy
+  Replication Strategy Pptions: {replication_factor=1}
+  Table Compression: null
+  Table Compaction Strategy: null
+  Table Compaction Strategy Options: {}
+Transport:
+  factory=org.apache.cassandra.thrift.TFramedTransportFactory; truststore=null; truststore-password=null; keystore=null; keystore-password=null; ssl-protocol=TLS; ssl-alg=SunX509; store-type=JKS; ssl-ciphers=TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA;
+Port:
+  Native Port: 9042
+  Thrift Port: 9160
+  JMX Port: 7199
+Send To Daemon:
+  *not set*
+Graph:
+  File: null
+  Revision: unknown
+  Title: null
+  Operation: USER
+TokenRange:
+  Wrap: false
+  Split Factor: 1
+
+******************** Profile ********************
+  Keyspace Name: stresscql_kostya_column_one
+  Keyspace CQL:
+***
+CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_one WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+***
+
+  Table Name: t_kostya_one
+  Table CQL:
+***
+CREATE TABLE t_kostya_one (
+      sensor_name ascii,
+      value double,
+      published_date timestamp,
+      PRIMARY KEY(sensor_name)
+) WITH
+  memtable_flush_period_in_ms=5000
+  AND caching = { 'keys' : 'NONE', 'rows_per_partition' : '15000' };
+***
+
+  Extra Schema Definitions: [CREATE CUSTOM INDEX t_kostya_one_index_published_date_idx ON t_kostya_one (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';]
+  Generator Configs:
+  Query Definitions:
+    simple1: CQL:select * from t_kostya_one where published_date > ? LIMIT 15000;Fields:samerow;
+  Token Range Queries:
+  Insert Settings:
+    partitions: fixed(15000)
+    batchtype: UNLOGGED
+    select: uniform(1..15000)/15000
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.datastax.shaded.netty.util.internal.PlatformDependent0 (file:/home/lin/apps/cassandra/lib/cassandra-driver-core-3.0.1-shaded.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.datastax.shaded.netty.util.internal.PlatformDependent0
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Connected to cluster: Test Cluster, max pending requests per connection 128, max connections per host 8
+Datatacenter: datacenter1; Host: localhost/127.0.0.1; Rack: rack1
+Created schema. Sleeping 1s for propagation.
+Created extra schema. Sleeping 1s for propagation.
+Generating batches with [15000..15000] partitions and [1..15000] rows (of [15000..15000] total rows in the partitions)
+
+Sleeping 2s...
+Thread count was not specified
+
+Running with 4 threadCount
+Running [insert, simple1] with 4 threads for 100000 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+total,             4,       4,   60000,   60000,  5804,9,  5733,6,  5888,8,  5888,8,  5888,8,  5888,8,    7,0, -0,92582,      0,      1,     204,     204,       0,     197
+total,             5,       1,   10000,   10000,  4075,8,  4076,9,  4076,9,  4076,9,  4076,9,  4076,9,   11,0, -0,76028,      0,      2,      61,     106,       8,     655
+total,             7,       7,  110860,  110860,  4536,1,  4500,5,  4576,0,  4576,0,  4576,0,  4576,0,   11,3, -0,57559,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        1 op/s  [insert: 1 op/s]
+Partition rate            :    8 873 pk/s  [insert: 18 973 pk/s]
+Row rate                  :    8 873 row/s [insert: 18 973 row/s]
+Latency mean              : 5195,4 ms [insert: 5 195,4 ms]
+Latency median            : 5729,4 ms [insert: 5 729,4 ms]
+Latency 95th percentile   : 5888,8 ms [insert: 5 888,8 ms]
+Latency 99th percentile   : 5888,8 ms [insert: 5 888,8 ms]
+Latency 99.9th percentile : 5888,8 ms [insert: 5 888,8 ms]
+Latency max               : 5888,8 ms [insert: 5 888,8 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 24
+Total GC memory           : 4,360 GiB
+Total GC time             :    5,4 seconds
+Avg GC time               :  225,5 ms
+StdDev GC time            :  228,5 ms
+Total operation time      : 00:00:11
+
+Sleeping for 15s
+
+Running with 8 threadCount
+Running [insert, simple1] with 8 threads for 100000 iteration
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.OperationTimedOutException: [localhost/127.0.0.1] Timed out waiting for server response))
+total,             7,       1,   16358,   16358, 12323,5, 12331,3, 12440,3, 12440,3, 12440,3, 12440,3,   13,1, -0,93541,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        1 op/s  [insert: 1 op/s]
+Partition rate            :    7 626 pk/s  [insert: 16 358 pk/s]
+Row rate                  :    7 626 row/s [insert: 16 358 row/s]
+ERROR 06:37:03,017 [Control connection] Cannot connect to any host, scheduling retry in 1000 milliseconds
+Latency mean              : 12323,5 ms [insert: 12 323,5 ms]
+Latency median            : 12331,3 ms [insert: 12 331,3 ms]
+Latency 95th percentile   : 12440,3 ms [insert: 12 440,3 ms]
+Latency 99th percentile   : 12440,3 ms [insert: 12 440,3 ms]
+Latency 99.9th percentile : 12440,3 ms [insert: 12 440,3 ms]
+Latency max               : 12440,3 ms [insert: 12 440,3 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 16
+Total GC memory           : 2,584 GiB
+Total GC time             :    6,0 seconds
+Avg GC time               :  372,1 ms
+StdDev GC time            :  655,9 ms
+Total operation time      : 00:00:13
+
+Improvement over 4 threadCount: -14%
+Sleeping for 15s
+апр. 23, 2020 6:37:03 AM com.sun.jmx.remote.internal.ClientCommunicatorAdmin$Checker run
+WARNING: Failed to check connection: java.net.SocketException: Connection reset
+апр. 23, 2020 6:37:03 AM com.sun.jmx.remote.internal.ClientCommunicatorAdmin$Checker run
+WARNING: stopping
+ERROR 06:37:04,020 [Control connection] Cannot connect to any host, scheduling retry in 2000 milliseconds
+ERROR 06:37:06,021 [Control connection] Cannot connect to any host, scheduling retry in 4000 milliseconds
+ERROR 06:37:10,023 [Control connection] Cannot connect to any host, scheduling retry in 8000 milliseconds
+ERROR 06:37:18,023 [Control connection] Cannot connect to any host, scheduling retry in 16000 milliseconds
+
+Running with 16 threadCount
+Running [insert, simple1] with 16 threads for 100000 iteration
+Failed to connect over JMX; not collecting these stats
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             7,      13,  181590,  181590,   112,0,   121,0,   153,6,   153,6,   153,6,   153,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :       13 op/s  [insert: 13 op/s]
+Partition rate            :  181 590 pk/s  [insert: 181 590 pk/s]
+Row rate                  :  181 590 row/s [insert: 181 590 row/s]
+Latency mean              :  112,0 ms [insert: 112,0 ms]
+Latency median            :  121,0 ms [insert: 121,0 ms]
+Latency 95th percentile   :  153,6 ms [insert: 153,6 ms]
+Latency 99th percentile   :  153,6 ms [insert: 153,6 ms]
+Latency 99.9th percentile :  153,6 ms [insert: 153,6 ms]
+Latency max               :  153,6 ms [insert: 153,6 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 8 threadCount: 2281%
+Sleeping for 15s
+
+Running with 24 threadCount
+Running [insert, simple1] with 24 threads for 100000 iteration
+Failed to connect over JMX; not collecting these stats
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             1,       1,   10000,   10000,    37,7,    37,7,    37,7,    37,7,    37,7,    37,7,    1,0,  0,00000,      0,      0,       0,       0,       0,       0
+ERROR 06:37:34,026 [Control connection] Cannot connect to any host, scheduling retry in 32000 milliseconds
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             7,      28,  414503,  414503,   187,5,   196,3,   221,8,   221,8,   221,8,   221,8,    1,2, -0,70787,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        6 op/s  [insert: 6 op/s]
+Partition rate            :   82 161 pk/s  [insert: 82 161 pk/s]
+Row rate                  :   82 161 row/s [insert: 82 161 row/s]
+Latency mean              :  166,1 ms [insert: 166,1 ms]
+Latency median            :  196,3 ms [insert: 196,3 ms]
+Latency 95th percentile   :  221,8 ms [insert: 221,8 ms]
+Latency 99th percentile   :  221,8 ms [insert: 221,8 ms]
+Latency 99.9th percentile :  221,8 ms [insert: 221,8 ms]
+Latency max               :  221,8 ms [insert: 221,8 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:01
+
+Improvement over 16 threadCount: -55%
+Sleeping for 15s
+
+Running with 36 threadCount
+Running [insert, simple1] with 36 threads for 100000 iteration
+Failed to connect over JMX; not collecting these stats
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             7,      13,  180304,  180304,    83,7,    73,5,   117,3,   117,3,   117,3,   117,3,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :       13 op/s  [insert: 13 op/s]
+Partition rate            :  180 304 pk/s  [insert: 180 304 pk/s]
+Row rate                  :  180 304 row/s [insert: 180 304 row/s]
+Latency mean              :   83,7 ms [insert: 83,7 ms]
+Latency median            :   73,5 ms [insert: 73,5 ms]
+Latency 95th percentile   :  117,3 ms [insert: 117,3 ms]
+Latency 99th percentile   :  117,3 ms [insert: 117,3 ms]
+Latency 99.9th percentile :  117,3 ms [insert: 117,3 ms]
+Latency max               :  117,3 ms [insert: 117,3 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 24 threadCount: 119%
+Sleeping for 15s
+
+Running with 54 threadCount
+Running [insert, simple1] with 54 threads for 100000 iteration
+Failed to connect over JMX; not collecting these stats
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             3,       3,   40000,   40000,    97,0,    81,9,   135,7,   135,7,   135,7,   135,7,    1,0,  0,00000,      0,      0,       0,       0,       0,       0
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             7,      57,  858058,  858058,   150,0,   140,8,   196,0,   196,0,   196,0,   196,0,    1,1, -0,85938,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        7 op/s  [insert: 7 op/s]
+Partition rate            :   93 464 pk/s  [insert: 93 464 pk/s]
+Row rate                  :   93 464 row/s [insert: 93 464 row/s]
+Latency mean              :  127,3 ms [insert: 127,3 ms]
+Latency median            :  135,7 ms [insert: 135,7 ms]
+Latency 95th percentile   :  196,0 ms [insert: 196,0 ms]
+Latency 99th percentile   :  196,0 ms [insert: 196,0 ms]
+Latency 99.9th percentile :  196,0 ms [insert: 196,0 ms]
+Latency max               :  196,0 ms [insert: 196,0 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:01
+
+Improvement over 36 threadCount: -48%
+Sleeping for 15s
+ERROR 06:38:06,027 [Control connection] Cannot connect to any host, scheduling retry in 64000 milliseconds
+
+Running with 81 threadCount
+Running [insert, simple1] with 81 threads for 100000 iteration
+Failed to connect over JMX; not collecting these stats
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             7,      11,  157032,  157032,   137,2,   151,9,   181,1,   181,1,   181,1,   181,1,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :       11 op/s  [insert: 11 op/s]
+Partition rate            :  157 032 pk/s  [insert: 157 032 pk/s]
+Row rate                  :  157 032 row/s [insert: 157 032 row/s]
+Latency mean              :  137,2 ms [insert: 137,2 ms]
+Latency median            :  151,9 ms [insert: 151,9 ms]
+Latency 95th percentile   :  181,1 ms [insert: 181,1 ms]
+Latency 99th percentile   :  181,1 ms [insert: 181,1 ms]
+Latency 99.9th percentile :  181,1 ms [insert: 181,1 ms]
+Latency max               :  181,1 ms [insert: 181,1 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:00
+
+Improvement over 54 threadCount: 68%
+Sleeping for 15s
+
+Running with 121 threadCount
+Running [insert, simple1] with 121 threads for 100000 iteration
+Failed to connect over JMX; not collecting these stats
+type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             4,       4,   55000,   55000,   106,1,    81,8,   159,0,   159,0,   159,0,   159,0,    1,0,  0,00000,      0,      0,       0,       0,       0,       0
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)
+total,             7,      63,  945832,  945832,    84,2,    80,7,    98,8,    98,8,    98,8,    98,8,    1,0, -0,82076,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :        7 op/s  [insert: 7 op/s]
+Partition rate            :   95 458 pk/s  [insert: 95 458 pk/s]
+Row rate                  :   95 458 row/s [insert: 95 458 row/s]
+Latency mean              :   96,7 ms [insert: 96,7 ms]
+Latency median            :   81,8 ms [insert: 81,8 ms]
+Latency 95th percentile   :  159,0 ms [insert: 159,0 ms]
+Latency 99th percentile   :  159,0 ms [insert: 159,0 ms]
+Latency 99.9th percentile :  159,0 ms [insert: 159,0 ms]
+Latency max               :  159,0 ms [insert: 159,0 ms]
+Total partitions          :    100 000 [insert: 100 000]
+Total errors              :          0 [insert: 0]
+Total GC count            : 0
+Total GC memory           : 0,000 KiB
+Total GC time             :    0,0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0,0 ms
+Total operation time      : 00:00:01
+
+Improvement over 81 threadCount: -39%
+Sleeping for 15s
+             id, type       total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+  4 threadCount, insert,            7,       1,   18973,   18973,  5195,4,  5729,4,  5888,8,  5888,8,  5888,8,  5888,8,    5,3, -0,57559,      0,     24,    3092,    5413,     228,    4464
+  4 threadCount, total,             7,       1,    8873,    8873,  5195,4,  5729,4,  5888,8,  5888,8,  5888,8,  5888,8,   11,3, -0,57559,      0,     24,    3092,    5413,     228,    4464
+  8 threadCount, insert,            7,       1,   16358,   16358, 12323,5, 12331,3, 12440,3, 12440,3, 12440,3, 12440,3,    6,1, -0,93541,      0,     16,    4382,    5953,     656,    2646
+  8 threadCount, total,             7,       1,    7626,    7626, 12323,5, 12331,3, 12440,3, 12440,3, 12440,3, 12440,3,   13,1, -0,93541,      0,     16,    4382,    5953,     656,    2646
+ 16 threadCount, insert,            7,      13,  181590,  181590,   112,0,   121,0,   153,6,   153,6,   153,6,   153,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 16 threadCount, total,             7,      13,  181590,  181590,   112,0,   121,0,   153,6,   153,6,   153,6,   153,6,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 24 threadCount, insert,            7,       6,   82161,   82161,   166,1,   196,3,   221,8,   221,8,   221,8,   221,8,    1,2, -0,70787,      0,      0,       0,       0,       0,       0
+ 24 threadCount, total,             7,       6,   82161,   82161,   166,1,   196,3,   221,8,   221,8,   221,8,   221,8,    1,2, -0,70787,      0,      0,       0,       0,       0,       0
+ 36 threadCount, insert,            7,      13,  180304,  180304,    83,7,    73,5,   117,3,   117,3,   117,3,   117,3,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 36 threadCount, total,             7,      13,  180304,  180304,    83,7,    73,5,   117,3,   117,3,   117,3,   117,3,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 54 threadCount, insert,            7,       7,   93464,   93464,   127,3,   135,7,   196,0,   196,0,   196,0,   196,0,    1,1, -0,85938,      0,      0,       0,       0,       0,       0
+ 54 threadCount, total,             7,       7,   93464,   93464,   127,3,   135,7,   196,0,   196,0,   196,0,   196,0,    1,1, -0,85938,      0,      0,       0,       0,       0,       0
+ 81 threadCount, insert,            7,      11,  157032,  157032,   137,2,   151,9,   181,1,   181,1,   181,1,   181,1,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+ 81 threadCount, total,             7,      11,  157032,  157032,   137,2,   151,9,   181,1,   181,1,   181,1,   181,1,    0,6,  0,00000,      0,      0,       0,       0,       0,       0
+121 threadCount, insert,            7,       7,   95458,   95458,    96,7,    81,8,   159,0,   159,0,   159,0,   159,0,    1,0, -0,82076,      0,      0,       0,       0,       0,       0
+121 threadCount, total,             7,       7,   95458,   95458,    96,7,    81,8,   159,0,   159,0,   159,0,   159,0,    1,0, -0,82076,      0,      0,       0,       0,       0,       0
+END
+lin@lin-pc:~/apps/cassandra$ ^C
+lin@lin-pc:~/apps/cassandra$
