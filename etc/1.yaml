@@ -1,0 +1,31 @@
+keyspace: stresscql_kostya_column_big
+
+keyspace_definition: |
+  CREATE KEYSPACE IF NOT EXISTS stresscql_kostya_column_big WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+table: t_kostya_big
+table_definition: |
+  CREATE TABLE t_kostya_big (
+        sensor_name ascii,
+        value_n_1 double,
+        ...
+
+        value_n_999 double,
+        value_n_1000 double,
+        published_date timestamp,
+        PRIMARY KEY(sensor_name)
+  );
+
+extra_definitions:
+  - "CREATE CUSTOM INDEX t_kostya_big_index_published_date_idx ON t_kostya_big (published_date) USING 'org.apache.cassandra.index.sasi.SASIIndex';"
+
+
+
+queries:
+  simple_big1:
+    # '2020-01-01 00:00+03' -- будет параметр из явы передаваться пока срез за 2020 год, потом на 2 недели
+    cql: |
+      select * from t_kostya_big where published_date > '2020-01-01 00:00+03'
+      LIMIT 15000
+      ALLOW FILTERING;
+    fields: samerow             # samerow or multirow (select arguments from the same row, or randomly from all rows in the partition)
