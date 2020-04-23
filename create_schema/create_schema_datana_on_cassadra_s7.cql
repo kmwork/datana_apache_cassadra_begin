@@ -4,7 +4,7 @@ create keyspace datana_test WITH replication = {'class':'SimpleStrategy', 'repli
 -- переход в бд датаны
 use datana_test;
 -- ====================================
---создание табилцы для Сименс датчиков
+--создание таблицы для Сименс датчиков
 -- ====================================
 
 -- таблица значений с датчиков
@@ -13,7 +13,7 @@ CREATE TABLE datana_test.s7_plc_gateway
 (
     request_uuid UUID, /** id запроса на шлюз на один dataset */
     controller_id int, /* id контроллера  */
-    readed_time TIMESTAMP, /** время когда считали данные с контроллера */
+    readied_time TIMESTAMP, /** время когда считали данные с контроллера */
     data_value map<int, decimal>, /* dataset_id переменной  и ее значение */
     PRIMARY KEY (controller_id, request_uuid)
 );
